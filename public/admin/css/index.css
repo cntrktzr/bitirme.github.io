@@ -1,0 +1,283 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+  }
+body{
+    background: url(../img/1920back.png) no-repeat;
+    width: 1920px;
+    height: 2945px;
+    padding-left: 235px;
+    padding-right: 235px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+}
+main{
+    padding-top: 90px;
+    padding-bottom: 50px;
+}
+header{
+    display: flex;
+}
+.nav-menu li{
+    display: flex;
+    padding-top: 19px;
+}
+.ul1 a{
+    text-decoration: none;
+    color: rgba(43,35,61,1);
+    font-family: 'Fira Sans Condensed', sans-serif;
+    padding: 20px;
+    font-size: 24px;
+}
+.ul1 a:hover{
+    background-color: rgba(224, 215, 242,1);
+    border-radius: 10px;
+    font-weight: bold;
+}
+.ul2 a{
+    text-decoration: none;
+    color: white;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    padding: 20px;
+    font-size: 24px;
+}
+.ul2 a:hover{
+    font-weight: bold;
+}
+.dropbtn {
+    background-color: transparent;
+    color: rgba(43,35,61,1);
+    font-family: 'Fira Sans Condensed', sans-serif;
+    padding: 20px;
+    font-size: 24px;
+    border: none;
+    cursor: pointer;
+}
+  
+.dropdown {
+    margin-top: -20px;
+    position: relative;
+    display: inline-block;
+}
+  
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 170px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-radius: 10px;
+}
+  
+.dropdown-content a {
+    color: rgba(43,35,61,1);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 18px;
+}
+  
+.dropdown-content a:hover {
+    background-color: #f1f1f1
+}
+  
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+  
+.dropdown:hover .dropbtn {
+    background-color: rgba(224, 215, 242,1);
+    border-radius: 10px;
+    font-weight: bold;
+}
+.button{
+  width: 150px; ;
+  background-color: rgba(115, 88, 161,1);
+  border: none;
+  border-radius: 10px;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-family: 'Fira Sans Condensed', sans-serif;
+  font-size: 24px;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  cursor: pointer;
+  margin: auto;
+  display: block;
+  margin-top: -15px;
+}
+.button:hover{
+    width: 150px; ;
+    background-color: rgba(224, 215, 242,1);
+    border: none;
+    border-radius: 10px;
+    color: rgba(43,35,61,1);
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    margin-top: -15px;
+  }
+.giris{
+    display: flex;
+    position: relative;
+    text-align: center;
+    color:rgba(43,35,61,1); 
+}
+.giris-text{
+    position: absolute;
+    font-family: 'Fira Sans', sans-serif;
+    font-weight: 600;
+    font-size: 40px;
+    top: 250px;
+    left: 150px;
+}
+.second-part{
+    display: flex;
+    padding-top: 150px;
+}
+.paragraf{
+    text-align: center;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 36px;
+    margin-top: 50px;
+    line-height: normal;
+    color: rgba(224, 215, 242,1);
+}
+.centered1{
+    padding: 30px;
+    display: inline-block;
+}
+.centered2{
+    padding-left: 100px;
+}
+.button2{
+    background-color: rgba(224, 215, 242,1);
+    border: none;
+    border-radius: 10px;
+    color: rgba(43,35,61,1);
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 37px;
+    font-style: italic;
+    cursor: pointer;
+    padding: 15px 32px;
+  }
+  .button2:hover{
+    background-color: rgba(43,35,61,1);
+    border: none;
+    border-radius: 10px;
+    color: rgba(224, 215, 242,1);
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Fira Sans', sans-serif;
+    font-size: 37px;
+    font-style: italic;
+    cursor: pointer;
+    padding: 15px 32px;
+  }
+  .özellikler{
+      margin-top: 100px;
+  }
+  .button3{
+    background-color: rgba(43,35,61,1);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 15px 32px;
+    opacity: 0.5;
+  }
+  .button3:hover{
+    background-color: rgba(224, 215, 242,1);
+    border: none;
+    border-radius: 10px;
+    color: rgba(43,35,61,1);
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 15px 32px;
+    opacity: 0.5;
+  }
+  .video{
+      width: 742px;
+      height: 464px;
+      background-color: rgba(224, 215, 242,1);
+      border: none;
+      border-radius: 10px;
+      margin: auto;
+      margin-top: 150px;
+      position: relative;
+  }
+  .testvideo{
+      font-family: 'Fira Sans Condensed', sans-serif;
+      color: rgba(115, 88, 161,1);
+      font-size: 25px;
+      font-weight: 600;
+      margin-left: 18px;
+  }
+  .videostop:hover{
+      filter: hue-rotate(90deg)
+  }
+  .b-logo{
+      width: 100px;
+      height: auto;
+      margin-left: 680px;
+      margin-bottom: 30px;
+  }
+  .maddeler{
+      display: flex;
+      margin-left: 420px;
+      margin-bottom: 30px;
+  }
+  .maddeler ul a{
+      font-size: 30px;
+      font-family: 'Fira Sans Condensed', sans-serif;
+      text-decoration: none;
+      color: white;
+      padding: 30px;
+  }
+  .maddeler ul a:hover{
+      font-weight: bold;
+      transform: scale(1.5);
+  }
+  .social-media{
+      display: flex;
+      margin: auto;
+      margin-left: 620px;
+  }
+  .social-media ul a {
+      color: white;
+      font-size: 23px;
+      padding: 20px;
+  }
+  .social-media ul a:hover i{
+      transform: scale(1.5);
+  }
+  .en-alt{
+      width: 1450px;
+      display: block;
+      margin-top: 100px;
+  }
