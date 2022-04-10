@@ -10,8 +10,22 @@
 <body class="chat-body">
     <div class="chat-container">
         <header class="chat-header">
-          <h1 class="chat-heading"> Flash Chat</h1>
-          <a href="/join" class="btn">Leave Room</a>
+          <h1 class="chat-heading"> T&I Meeting Room</h1>
+          
+          <div class="custom-select" >
+            <select class="bilgi" id="language" name="language">
+                <option value="Turkish">Turkish</option>
+                <option value="English">English</option>
+                <option value="German">German</option>
+                <option value="Spanish">Spanish</option>
+                <option value="French">French</option>
+                <option value="Italian">Italian</option>
+            </select> 
+        </div>
+
+        <a href="/join" class="btn">Leave Room</a>
+
+
         </header>
         <main class="chat-main">
           <div class="chat-sidebar">
@@ -37,6 +51,7 @@
       </div>
 
       <!-- Query string library CDN -->
+      <script src="admin/js/join.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
       <script src="/socket.io/socket.io.js"></script>
       <script src="admin/js/main.js"></script>
