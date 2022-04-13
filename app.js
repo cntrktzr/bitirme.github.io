@@ -8,7 +8,7 @@ const http=require('http');
 const socketio=require('socket.io');
 const formatMessage=require('./public/admin/js/messages');
 const { format } = require('path');
-const  {userJoin,getCurrentUser, getRoomUsers, userLeave}=require('./public/admin/js/users');
+const  {userJoin,getCurrentUser, getRoomUsers,getLanguageUser, userLeave}=require('./public/admin/js/users');
 const server=http.createServer(app);
 const io=socketio(server);
 const PORT = 3000 || process.env.PORT;
@@ -19,10 +19,10 @@ const admin = 'admin';
 
 io.on('connection', (socket)=>{
 
-    socket.on('joinRoom',({username,room})=>{
+    socket.on('joinRoom',({username,room, language})=>{
 
         //to join a room
-        const user=userJoin(socket.id,username,room);
+        const user=userJoin(socket.id,username,room, language);
         socket.join(user.room);
 
         socket.emit('message', formatMessage(admin,'welcome to the chat'));
@@ -34,10 +34,14 @@ io.on('connection', (socket)=>{
             room:user.room,
             users:getRoomUsers(user.room)
         });
+
+        io.to(user.language).emit('roomUsers',{
+            language:user.language,
+            users:getLanguageUser(user.language)
+        })
+
+
     });
-
-
-    
 
 
     // Listen for the chat message 
@@ -46,10 +50,7 @@ io.on('connection', (socket)=>{
         io.to(user.room).emit('message',formatMessage(user.username,msg));
     });
 
-   
-   
-   
-   
+
     // User disconnects
     socket.on('disconnect',()=>{
 
@@ -69,11 +70,6 @@ io.on('connection', (socket)=>{
 
 
 });
-
-
-
-
-
 
 //Database bağlantısı
 require('./src/config/database')

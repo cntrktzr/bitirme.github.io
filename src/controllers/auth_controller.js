@@ -45,6 +45,7 @@ const register = async (req, res, next) =>{
         req.flash('lastname', req.body.lastname);
         req.flash('password', req.body.password);
         req.flash('rpassword', req.body.rpassword);
+        req.flash('language', req.body.language)
         res.redirect('/register');
     }
 
@@ -67,7 +68,8 @@ const register = async (req, res, next) =>{
                     email : req.body.email,
                     name : req.body.name,
                     lastname : req.body.lastname,
-                    password : req.body.password
+                    password : req.body.password,
+                    language : req.body.language
 
                 });
                 await newUser.save();

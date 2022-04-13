@@ -43,12 +43,19 @@
                                         <input type="password" value="<%= typeof rpassword != 'undefined' ? rpassword : '' %>" name="rpassword" class="form-control form-control-user"
                                             id="exampleRepeatPassword" placeholder="Repeat Password">
                                     </div>
-
-                                    <div class="form-group">
-                                        <input type="email" value="<%= typeof email != 'undefined' ? email : '' %>" name="email" class="form-control form-control-user" id="exampleInputEmail"
-                                            placeholder="Email Address">
-                                    </div>
                                 </div>
+                                <div class="form-group row" >
+                                    <select class="custom-select form-control " value="<%= typeof language != 'undefined' ? language : '' %>" style="border-radius: 50px; height: 5vh; width: 26.3vw; margin-left: 0.7vmax;" type="language" name="language" id="language"  >
+                                    <option selected class="font" value="Turkish">Turkish</option>
+                                    <option class="font" value="English">English</option>
+                                    <option class="font" value="Spanish">Spanish</option>
+                                    <option class="font" value="Italian">Italian</option>
+                                    <option class="font" value="German">German</option>
+                                    <option class="font" value="French">French</option>
+                                  </select>
+                                </div>
+                                
+
                                 <button type="submit" class="btn btn-primary btn-user btn-block">
                                     Register Account
                                 </button>

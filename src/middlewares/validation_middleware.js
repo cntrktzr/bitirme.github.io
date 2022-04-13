@@ -29,8 +29,10 @@ const validateNewUser = () =>{
                 }
                 return true;
 
-        })
+        }),
 
+        body('language')
+            .trim()
         
     ]
 }
