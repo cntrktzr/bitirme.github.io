@@ -27,7 +27,7 @@ function getRoomUsers(room){
 }
 
 //
-function getLanguageUser(language){
+function getLanguage(language){
     return users.filter( user => user.language === language);
 }
 
@@ -38,6 +38,7 @@ module.exports={
     getCurrentUser,
     userLeave,
     getRoomUsers,
-    getLanguageUser
+    getLanguage
+
 
 };

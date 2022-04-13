@@ -2,12 +2,12 @@
 
 const chatForm=document.getElementById('chat-form');
 const chatMessages=document.querySelector('.chat-messages');
-const selectedLanguage = document.getElementById('language-Select');
+const sendLanguage = document.getElementById('languageSelect');
 const roomName=document.getElementById('room-name');
 const userList=document.getElementById('users');
 
 
-const { username, room, language,}=Qs.parse(location.search,{
+const { username, room, language}= Qs.parse(location.search,{
     ignoreQueryPrefix:true
 });
 
@@ -15,15 +15,13 @@ const { username, room, language,}=Qs.parse(location.search,{
 const socket=io();
 
 //send the room name and user name to the server 
-socket.emit('joinRoom',{username,room,language});
+socket.emit('joinRoom',{username,room, language});
 
 //Get room and users
-socket.on('roomUsers',({users,room,language})=>{
+socket.on('roomUsers',({users,room, languageSelect})=>{
+    outputLanguageSelect(languageSelect);
     outputRoomName(room);
-    outputUsers(users);
-    outputLanguage(language); 
-    
-    
+    outputUsers(users);  
     
 });
 
@@ -76,6 +74,8 @@ function outputUsers(users){
     `;
 }
 
-function outputLanguage(language){
-    selectedLanguage.innerText=user.language;
+function outputLanguageSelect(languageSelect){
+    sendLanguage.innerText=languageSelect;
 }
+
+

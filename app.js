@@ -8,7 +8,7 @@ const http=require('http');
 const socketio=require('socket.io');
 const formatMessage=require('./public/admin/js/messages');
 const { format } = require('path');
-const  {userJoin,getCurrentUser, getRoomUsers,getLanguageUser, userLeave}=require('./public/admin/js/users');
+const  {userJoin,getCurrentUser, getRoomUsers, getLanguage,userLeave}=require('./public/admin/js/users');
 const server=http.createServer(app);
 const io=socketio(server);
 const PORT = 3000 || process.env.PORT;
@@ -24,21 +24,18 @@ io.on('connection', (socket)=>{
         //to join a room
         const user=userJoin(socket.id,username,room, language);
         socket.join(user.room);
+        socket.emit('message' , formatMessage(admin,`Your selected language is "${user.language}"`));
 
-        socket.emit('message', formatMessage(admin,'welcome to the chat'));
+        socket.emit('message', formatMessage(admin,'Welcome to the chat !!!'));
 
         socket.broadcast.to(user.room).emit('message', formatMessage(admin,`${user.username} has joined the chat!`));
 
         // Send users and room info
         io.to(user.room).emit('roomUsers',{
             room:user.room,
-            users:getRoomUsers(user.room)
+            users:getRoomUsers(user.room),
+            language :getLanguage(user.language)
         });
-
-        io.to(user.language).emit('roomUsers',{
-            language:user.language,
-            users:getLanguageUser(user.language)
-        })
 
 
     });
@@ -124,6 +121,7 @@ app.use(expressLayout);
 const path = require('path');
 
 const res = require('express/lib/response');
+const { $where } = require('./src/model/user_model');
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 app.set('views', path.resolve(__dirname, './src/views'));
