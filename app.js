@@ -15,7 +15,7 @@ const PORT = 3000 || process.env.PORT;
 
 
 
-const admin = 'admin';
+const admin = 'T&I';
 
 io.on('connection', (socket)=>{
 
@@ -24,7 +24,7 @@ io.on('connection', (socket)=>{
         //to join a room
         const user=userJoin(socket.id,username,room, language);
         socket.join(user.room);
-        socket.emit('message' , formatMessage(admin,`Your selected language is "${user.language}"`));
+        socket.emit('message' , formatMessage(admin,`Your selected language is "${user.language}".`));
 
         socket.emit('message', formatMessage(admin,'Welcome to the chat !!!'));
 
@@ -34,12 +34,11 @@ io.on('connection', (socket)=>{
         io.to(user.room).emit('roomUsers',{
             room:user.room,
             users:getRoomUsers(user.room),
-            language :getLanguage(user.language)
+
         });
 
 
     });
-
 
     // Listen for the chat message 
     socket.on('chatMessage', (msg)=>{
