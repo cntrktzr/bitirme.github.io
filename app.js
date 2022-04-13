@@ -15,6 +15,7 @@ const PORT = 3000 || process.env.PORT;
 
 
 
+
 const admin = 'T&I';
 
 io.on('connection', (socket)=>{
@@ -24,9 +25,7 @@ io.on('connection', (socket)=>{
         //to join a room
         const user=userJoin(socket.id,username,room, language);
         socket.join(user.room);
-        socket.emit('message' , formatMessage(admin,`Your selected language is "${user.language}".`));
-
-        socket.emit('message', formatMessage(admin,'Welcome to the chat !!!'));
+        socket.emit('message' , formatMessage(admin,`Welcome to the chat :). Your selected language is "${user.language}".`));
 
         socket.broadcast.to(user.room).emit('message', formatMessage(admin,`${user.username} has joined the chat!`));
 
@@ -37,14 +36,18 @@ io.on('connection', (socket)=>{
 
         });
 
-
     });
+
+    
 
     // Listen for the chat message 
     socket.on('chatMessage', (msg)=>{
         const user=getCurrentUser(socket.id);
         io.to(user.room).emit('message',formatMessage(user.username,msg));
+
+        
     });
+
 
 
     // User disconnects
@@ -130,8 +133,6 @@ app.set('views', path.resolve(__dirname, './src/views'));
 app.get('/', (req, res) =>{
     res.json({mesaj : 'Merhaba'});
 })
-
-
 
 
 app.use('/', authRouter);
