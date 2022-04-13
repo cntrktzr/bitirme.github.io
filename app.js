@@ -37,6 +37,8 @@ io.on('connection', (socket)=>{
     });
 
 
+    
+
 
     // Listen for the chat message 
     socket.on('chatMessage', (msg)=>{
@@ -44,6 +46,10 @@ io.on('connection', (socket)=>{
         io.to(user.room).emit('message',formatMessage(user.username,msg));
     });
 
+   
+   
+   
+   
     // User disconnects
     socket.on('disconnect',()=>{
 
