@@ -70,6 +70,14 @@ io.on('connection', (socket)=>{
 
 });
 
+const ejs = require('ejs');
+const expressLayout = require('express-ejs-layouts');
+const path = require('path');
+app.use(expressLayout);
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.set('views', path.resolve(__dirname, './src/views'));
+
 //Database bağlantısı
 require('./src/config/database')
 const MongoDBStore = require('connect-mongodb-session')(session);
@@ -116,17 +124,13 @@ const chatRouter = require('./src/routers/chat_router');
 
 app.use(express.urlencoded({extended: true}))
 
-const ejs = require('ejs');
-const expressLayout = require('express-ejs-layouts');
-app.use(expressLayout);
 
-const path = require('path');
+
+
 
 const res = require('express/lib/response');
 const { $where } = require('./src/model/user_model');
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
-app.set('views', path.resolve(__dirname, './src/views'));
+
 
 
 

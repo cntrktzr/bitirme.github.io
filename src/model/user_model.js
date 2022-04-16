@@ -26,6 +26,11 @@ const UserSchema = new Schema ({
         lowercase: true
     },
 
+    emailAktif: {
+        type: Boolean,
+        default: false
+    },
+
     password: {
         type: String,
         required: true,
