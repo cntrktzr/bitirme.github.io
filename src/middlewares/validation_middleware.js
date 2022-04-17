@@ -24,13 +24,8 @@ const validateNewUser = () =>{
         body('rpassword')
             .trim()
             .custom((value, {req}) => {
-<<<<<<< HEAD
-                if(value !== req.body.password){2
-                    throw new Error('Passwords does not match.')
-=======
                 if(value !== req.body.password){
                     throw new Error('Passwords do not match.')
->>>>>>> 66bcaa617a9eb5ecb5a25053bfc02ed1763fe138
                 }
                 return true;
 

@@ -8,7 +8,7 @@ const http=require('http');
 const socketio=require('socket.io');
 const formatMessage=require('./public/admin/js/messages');
 const { format } = require('path');
-const  {userJoin,getCurrentUser, getRoomUsers, getLanguage,userLeave}=require('./public/admin/js/users');
+const  {userJoin,getCurrentUser, getRoomUsers,userLeave}=require('./public/admin/js/users');
 const server=http.createServer(app);
 const io=socketio(server);
 const PORT = 3000 || process.env.PORT;
@@ -29,10 +29,15 @@ io.on('connection', (socket)=>{
 
         socket.broadcast.to(user.room).emit('message', formatMessage(admin,`${user.username} has joined the chat!`));
 
+
+
         // Send users and room info
         io.to(user.room).emit('roomUsers',{
             room:user.room,
             users:getRoomUsers(user.room),
+
+
+        
 
         });
 
