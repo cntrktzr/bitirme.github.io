@@ -1,5 +1,5 @@
 function googleTranslateElementInit() {
-    new google.translate.TranslateElement({ includedLanguages: 'en,es,fr,pt', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
+    new google.translate.TranslateElement({ includedLanguages: 'en,es,it,fr,tr,de', layout: google.translate.TranslateElement.InlineLayout.HORIZONTAL }, 'google_translate_element');
 }
 
 function triggerHtmlEvent(element, eventName) {
@@ -33,10 +33,16 @@ $(document).ready(function () {
             case "es":
                 selectIndex = 3;
                 break;
-            case "fr":
+            case "it":
                 selectIndex = 1;
                 break;
-            case "pt":
+            case "fr":
+                selectIndex = 2;
+                break;
+            case "tr":
+                selectIndex = 2;
+                break;
+            case "de":
                 selectIndex = 2;
                 break;
 
