@@ -24,7 +24,7 @@ const validateNewUser = () =>{
         body('rpassword')
             .trim()
             .custom((value, {req}) => {
-                if(value !== req.body.password){
+                if(value !== req.body.password){2
                     throw new Error('Passwords does not match.')
                 }
                 return true;
