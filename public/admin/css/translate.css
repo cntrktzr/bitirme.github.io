@@ -1,0 +1,32 @@
+#google_translate_element select {
+    background:#8e44c6;
+    color:#ffffff;
+    border: none;
+    border-radius:3px;
+    padding:6px 8px;
+    margin-left: 12px;
+
+    
+}
+    
+.goog-logo-link {
+    display:none!important;
+}
+.goog-te-gadget {
+    color:transparent!important;
+}
+    
+.goog-te-banner-frame {
+    display:none !important;
+}
+    
+#goog-gt-tt, .goog-te-balloon-frame {
+    display: none !important;
+}
+.goog-text-highlight { 
+    background: none !important; box-shadow: none !important;
+}
+    
+body {
+    top:0!important;
+}
