@@ -5,7 +5,8 @@ const chatMessages=document.querySelector('.chat-messages');
 const roomName=document.getElementById('room-name');
 const userList=document.getElementById('users');
 
-const {username, room}=Qs.parse(location.search,{
+
+const { username, room, language}= Qs.parse(location.search,{
     ignoreQueryPrefix:true
 });
 
@@ -13,12 +14,13 @@ const {username, room}=Qs.parse(location.search,{
 const socket=io();
 
 //send the room name and user name to the server 
-socket.emit('joinRoom',{username,room});
+socket.emit('joinRoom',{username,room, language});
 
 //Get room and users
-socket.on('roomUsers',({room,users})=>{
+socket.on('roomUsers',({users,room})=>{
     outputRoomName(room);
-    outputUsers(users);
+    outputUsers(users);  
+    
 });
 
 // Catch the message here
@@ -69,3 +71,7 @@ function outputUsers(users){
     ${users.map(user=>`<li>${user.username}</li>`).join('')}
     `;
 }
+
+
+
+

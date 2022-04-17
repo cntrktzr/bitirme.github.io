@@ -8,48 +8,48 @@ const http=require('http');
 const socketio=require('socket.io');
 const formatMessage=require('./public/admin/js/messages');
 const { format } = require('path');
-const  {userJoin,getCurrentUser, getRoomUsers, userLeave}=require('./public/admin/js/users');
+const  {userJoin,getCurrentUser, getRoomUsers, getLanguage,userLeave}=require('./public/admin/js/users');
 const server=http.createServer(app);
 const io=socketio(server);
 const PORT = 3000 || process.env.PORT;
 
 
 
-const admin = 'admin';
+
+const admin = 'T&I';
 
 io.on('connection', (socket)=>{
 
-    socket.on('joinRoom',({username,room})=>{
+    socket.on('joinRoom',({username,room, language})=>{
 
         //to join a room
-        const user=userJoin(socket.id,username,room);
+        const user=userJoin(socket.id,username,room, language);
         socket.join(user.room);
-
-        socket.emit('message', formatMessage(admin,'welcome to the chat'));
+        socket.emit('message' , formatMessage(admin,`Welcome to the chat :). Your selected language is "${user.language}".`));
 
         socket.broadcast.to(user.room).emit('message', formatMessage(admin,`${user.username} has joined the chat!`));
 
         // Send users and room info
         io.to(user.room).emit('roomUsers',{
             room:user.room,
-            users:getRoomUsers(user.room)
+            users:getRoomUsers(user.room),
+
         });
+
     });
 
-
     
-
 
     // Listen for the chat message 
     socket.on('chatMessage', (msg)=>{
         const user=getCurrentUser(socket.id);
         io.to(user.room).emit('message',formatMessage(user.username,msg));
+
+        
     });
 
-   
-   
-   
-   
+
+
     // User disconnects
     socket.on('disconnect',()=>{
 
@@ -70,10 +70,13 @@ io.on('connection', (socket)=>{
 
 });
 
-
-
-
-
+const ejs = require('ejs');
+const expressLayout = require('express-ejs-layouts');
+const path = require('path');
+app.use(expressLayout);
+app.use(express.static('public'));
+app.set('view engine', 'ejs');
+app.set('views', path.resolve(__dirname, './src/views'));
 
 //Database bağlantısı
 require('./src/config/database')
@@ -121,24 +124,19 @@ const chatRouter = require('./src/routers/chat_router');
 
 app.use(express.urlencoded({extended: true}))
 
-const ejs = require('ejs');
-const expressLayout = require('express-ejs-layouts');
-app.use(expressLayout);
 
-const path = require('path');
+
+
 
 const res = require('express/lib/response');
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
-app.set('views', path.resolve(__dirname, './src/views'));
+const { $where } = require('./src/model/user_model');
+
 
 
 
 app.get('/', (req, res) =>{
     res.json({mesaj : 'Merhaba'});
 })
-
-
 
 
 app.use('/', authRouter);

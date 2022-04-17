@@ -19,6 +19,8 @@
             <h2 id="room-name"></h2>
             <h3><i class="fas fa-users"></i> Users</h3>
             <ul id="users"></ul>
+            <h3><i class="fas fa-comments"></i> Selected Language:</h3>
+            <h2 id="languageSelect"></h2>
           </div>
           <div class="chat-messages"></div>
         </main>
@@ -32,6 +34,7 @@
               autocomplete="off"
             />
             <button class="chat-button"><i class="fas fa-paper-plane"></i> Send</button>
+            
           </form>
         </div>
       </div>
@@ -42,13 +45,5 @@
       <script src="admin/js/main.js"></script>
     </body>
 
-    <script>
-      const api = "AIzaSyDi2mALm1ZObsWnOFVwgc-6j59enxrittg";
-      const googleTranslate = require('google-translate')(api);
-      const text = 'I am using google translator to convert this text to spanish'
-      console.log("English :>",text);
-      googleTranslate.translate(text, 'es', function(err, translation) {
-      console.log("Spanish :>",translation.translatedText);
-});
-    </script>
+    
 </html>
