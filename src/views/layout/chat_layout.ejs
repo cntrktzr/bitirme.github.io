@@ -34,15 +34,24 @@
               autocomplete="off"
             />
             <button class="chat-button"><i class="fas fa-paper-plane"></i> Send</button>
-            
+
+            <select>
+							<option class="dropdown-item languageOption selectedLang" href="javascript:void(0)" data-lang="en" data-text="English"> English</option>
+							<option class="dropdown-item languageOption notSelectedLang" href="javascript:void(0)" data-lang="es" data-text="Espanol"> Espanol</option>
+							<option class="dropdown-item languageOption notSelectedLang" href="javascript:void(0)" data-lang="fr" data-text="French"> French</option>
+						</select>
+              
           </form>
         </div>
       </div>
 
       <!-- Query string library CDN -->
+      <script src="https://code.jquery.com/jquery-3.6.0.js"			  crossorigin="anonymous"></script>
+      <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
       <script src="/socket.io/socket.io.js"></script>
       <script src="admin/js/main.js"></script>
+      <script src="admin/js/translate.js"></script>
     </body>
 
     

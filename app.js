@@ -14,8 +14,6 @@ const io=socketio(server);
 const PORT = 3000 || process.env.PORT;
 
 
-
-
 const admin = 'T&I';
 
 io.on('connection', (socket)=>{
@@ -29,37 +27,23 @@ io.on('connection', (socket)=>{
 
         socket.broadcast.to(user.room).emit('message', formatMessage(admin,`${user.username} has joined the chat!`));
 
-
-
         // Send users and room info
         io.to(user.room).emit('roomUsers',{
             room:user.room,
             users:getRoomUsers(user.room),
-
-
-        
-
         });
-
     });
-
-    
 
     // Listen for the chat message 
     socket.on('chatMessage', (msg)=>{
         const user=getCurrentUser(socket.id);
         io.to(user.room).emit('message',formatMessage(user.username,msg));
-
-        
     });
 
-
-
-    // User disconnects
+     // User disconnects
     socket.on('disconnect',()=>{
 
         const user=userLeave(socket.id);
-
         if(user){
             io.to(user.room).emit('message', formatMessage(admin,`${user.username} has left the chat`));
 
@@ -67,12 +51,8 @@ io.on('connection', (socket)=>{
                 room:user.room,
                 users:getRoomUsers(user.room)
             });
-        }
-
-        
+        }     
     });
-
-
 });
 
 const ejs = require('ejs');
@@ -113,8 +93,6 @@ app.use((req, res, next) =>{
     res.locals.password = req.flash('password');
     res.locals.rpassword = req.flash('rpassword');
     res.locals.login_error = req.flash('error');
-
-
     next();
 })
 
@@ -129,20 +107,12 @@ const chatRouter = require('./src/routers/chat_router');
 
 app.use(express.urlencoded({extended: true}))
 
-
-
-
-
 const res = require('express/lib/response');
 const { $where } = require('./src/model/user_model');
-
-
-
 
 app.get('/', (req, res) =>{
     res.json({mesaj : 'Merhaba'});
 })
-
 
 app.use('/', authRouter);
 app.use('/giris' , girisRouter);
