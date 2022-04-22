@@ -6,6 +6,7 @@ const roomName=document.getElementById('room-name');
 const userList=document.getElementById('users');
 
 
+
 const { username, room, language}= Qs.parse(location.search,{
     ignoreQueryPrefix:true
 });
@@ -46,6 +47,7 @@ chatForm.addEventListener('submit',(e)=>{
     e.target.elements.msg.focus();
 
 });
+
 
 // Output message to DOM
 function outputMessage(message){

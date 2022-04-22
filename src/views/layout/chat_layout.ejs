@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css" integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
     <link rel="stylesheet" href="admin/css/join.css">
     <link rel="stylesheet" href="admin/css/translate.css">
-    <title>Flash Chat</title>
+    <title>T&I Meeting</title>
 </head>
 <body class="chat-body">
     <div class="chat-container">
@@ -17,13 +17,13 @@
         <main class="chat-main">
           <div class="chat-sidebar">
             <h3><i class="fas fa-comments"></i> Select language</h3>
-            <div id='google_translate_element'></div>
+            <!--<div id='google_translate_element'></div>-->
             <h3><i class="fas fa-comments"></i> Room Name:</h3>
             <h2 id="room-name"></h2>
             <h3><i class="fas fa-users"></i> Users</h3>
             <ul id="users"></ul>
           </div>
-          <div class="chat-messages"></div>
+          <div id="txtTarget" class="chat-messages"></div>
         </main>
         <div class="chat-form-container">
           <form id="chat-form">
@@ -34,14 +34,16 @@
               required
               autocomplete="off"
             />
-            <button class="chat-button"><i class="fas fa-paper-plane"></i> Send</button>
+            <button id="btnTranslate" class="chat-button"><i class="fas fa-paper-plane"></i> Send</button>
+
             
-          
+
           </form>
         </div>
       </div>
 
       <!-- Query string library CDN -->
+
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
       <script src="/socket.io/socket.io.js"></script>
@@ -55,3 +57,17 @@
 
     
 </html>
+
+
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<script type="text/javascript">
+    $("#btnTranslate").click(function () {
+        var url = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDi2mALm1ZObsWnOFVwgc-6j59enxrittg";
+        url += "&source=" + $("#ddlSource").val();
+        url += "&target=" + $("#ddlTarget").val();
+        url += "&q=" + escape($("#txtSource").val());
+        $.get(url, function (data, status) {
+            $("#txtTarget").val(data.data.translations[0].translatedText);
+        });
+    });
+</script>
