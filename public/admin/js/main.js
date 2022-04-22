@@ -5,8 +5,6 @@ const chatMessages=document.querySelector('.chat-messages');
 const roomName=document.getElementById('room-name');
 const userList=document.getElementById('users');
 
-
-
 const { username, room, language}= Qs.parse(location.search,{
     ignoreQueryPrefix:true
 });
@@ -39,6 +37,8 @@ chatForm.addEventListener('submit',(e)=>{
 
     //gettting the message
     const msg = e.target.elements.msg.value;
+
+    
 
     //Emit message to the server
     socket.emit('chatMessage', msg);

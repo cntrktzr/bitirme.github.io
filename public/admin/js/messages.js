@@ -1,9 +1,10 @@
 const moment =require('moment');
 
+
 function formatMessage(username, textMessage){
     return{
         username:username,
-        textMessage:textMessage,
+        textMessage: textMessage,
         time: moment().format('h:mm a')
     }
 }
