@@ -42,7 +42,7 @@ io.on('connection', (socket)=>{
     });
     
     // Listen for the chat message 
-    socket.on('chatMessage',(msg, textMessage)=>{
+    socket.on('chatMessage',(msg)=>{
     const user=getCurrentUser(socket.id);
    
     const translate = new Translate();
