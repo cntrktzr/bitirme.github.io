@@ -42,14 +42,14 @@ io.on('connection', (socket)=>{
     });
     
     // Listen for the chat message 
-    socket.on('chatMessage', (msg)=>{
+    socket.on('chatMessage',(msg, textMessage)=>{
     const user=getCurrentUser(socket.id);
    
-    /*const translate = new Translate();
-    const textSecond = (msg);
+    const translate = new Translate();
+    const textSecond = `${user.language}`;
 
     async function detectLanguage() {
-        let [detections] = await translate.detect(msg);
+        let [detections] = await translate.detect(textSecond);
         detections = Array.isArray(detections) ? detections : [detections];
         console.log('Detections:');
         detections.forEach(detection => {
@@ -62,31 +62,30 @@ io.on('connection', (socket)=>{
 
     const projectId = 'bitirme-projesi-348016';
     const location = 'global';
-    const text = (message);
+    const text = msg;
 
     async function translateText() {
         const request = {
             parent: `projects/${projectId}/locations/${location}`,
             contents: [text],
             mimeType: 'text/html',
-            sourceLanguageCode: msg.detectLanguage,
-            targetLanguageCode: `${user.language}`,
+            sourceLanguageCode: `${user.language}`,
+            targetLanguageCode: 'en',
         };
     const [response] = await translationClient.translateText(request);
 
     for (const translation of response.translations) {
 
-        if(msg.detectLanguage == `${user.language}`){
-            io.to(user.room).emit('message',formatMessage(user.username, msg));
-        }
-        else {  
+        if(`${user.language}` !== 'en'){
             io.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`));
-        } 
+        }
+        
         
         console.log(`Translation: ${translation.translatedText}`);
     }
 }
-    translateText();*/       
+    translateText();
+
     io.to(user.room).emit('message',formatMessage(user.username, msg));
     });
 
