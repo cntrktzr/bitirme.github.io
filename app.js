@@ -8,18 +8,15 @@ const http=require('http');
 const socketio=require('socket.io');
 const formatMessage=require('./public/admin/js/messages');
 const { format } = require('path');
-const  {userJoin,getCurrentUser, getRoomUsers,userLeave}=require('./public/admin/js/users');
+const  {userJoin,getCurrentUser, getCurrentUserAndLanguage,getRoomUsers,userLeave}=require('./public/admin/js/users');
 const server=http.createServer(app);
 const io=socketio(server);
 const PORT = 3000 || process.env.PORT;
 const {TranslationServiceClient} = require('@google-cloud/translate');
 const {Translate} = require('@google-cloud/translate').v2;
 
-
 const admin = 'T&I';
-
-io.on('connection', (socket)=>{
-    
+io.on('connection', (socket, language)=>{
 
     socket.on('joinRoom',({username,room, language})=>{
 
@@ -44,9 +41,18 @@ io.on('connection', (socket)=>{
     // Listen for the chat message 
     socket.on('chatMessage',(msg)=>{
     const user=getCurrentUser(socket.id);
+    const userLanguage = getCurrentUserAndLanguage(language);
+
    
+
+    const translationClient = new TranslationServiceClient();
+
+    const projectId = 'bitirme-projesi-348016';
+    const location = 'global';
+    const text = msg;
+    
     /*const translate = new Translate();
-    const textSecond = `${user.language}`;
+    const textSecond = msg;
 
     async function detectLanguage() {
         let [detections] = await translate.detect(textSecond);
@@ -57,43 +63,24 @@ io.on('connection', (socket)=>{
         });
     };
     detectLanguage();*/
-
-    const translationClient = new TranslationServiceClient();
-
-    const projectId = 'bitirme-projesi-348016';
-    const location = 'global';
-    const text = msg;
-    const lang = ['tr', 'en,', 'it', 'fr', 'de', 'es'];
-
-    if(lang == `${user.language}`) {
-        
-    }
+  
     async function translateText() {
         const request = {
             parent: `projects/${projectId}/locations/${location}`,
             contents: [text],
             mimeType: 'text/html',
             sourceLanguageCode: `${user.language}`,
-            targetLanguageCode: 'en' ,
+            targetLanguageCode: `${user.language}`,
         };
     const [response] = await translationClient.translateText(request);
 
     for (const translation of response.translations) {
-
-        if(`${user.language}` !== 'en'){
-            //io.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`));
-            socket.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`));
-
-        }
-        
-        
+        socket.emit('message',formatMessage(user.username, msg)); // only sender
+        socket.broadcast.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`)); //except sender
         console.log(`Translation: ${translation.translatedText}`);
     }
 }
     translateText();
-
-    io.to(user.room).emit('message',formatMessage(user.username, msg));
-    //io.to(user.room).emit('output',formatMessage(user.username, msg));
     });
 
      // User disconnects

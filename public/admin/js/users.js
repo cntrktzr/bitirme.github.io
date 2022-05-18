@@ -13,7 +13,7 @@ function getCurrentUser(id){
 }
 
 function getCurrentUserAndLanguage(language){
-    return users.find((user)=>user.id===language);
+    return users.find((user)=>user.language===language);
 }
 
 //User leaves chat 
@@ -30,7 +30,7 @@ function getRoomUsers(room){
     return users.filter( user => user.room === room);
 }
 
-//
+//Get User's Language
 function getLanguage(language){
     return users.filter( user => user.language === language);
 }
