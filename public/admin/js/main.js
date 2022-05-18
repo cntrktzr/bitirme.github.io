@@ -68,7 +68,6 @@ function outputMessage(message){
     document.querySelector('.chat-messages').appendChild(div);
 }
 
-
 //Output room name to DOM
 function outputRoomName(room){
     roomName.innerText=room;

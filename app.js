@@ -8,7 +8,7 @@ const http=require('http');
 const socketio=require('socket.io');
 const formatMessage=require('./public/admin/js/messages');
 const { format } = require('path');
-const  {userJoin,getCurrentUser, getCurrentUserAndLanguage,getRoomUsers,userLeave}=require('./public/admin/js/users');
+const  {userJoin,getCurrentUser, getRoomUsers,userLeave }=require('./public/admin/js/users');
 const server=http.createServer(app);
 const io=socketio(server);
 const PORT = 3000 || process.env.PORT;
@@ -41,28 +41,13 @@ io.on('connection', (socket, language)=>{
     // Listen for the chat message 
     socket.on('chatMessage',(msg)=>{
     const user=getCurrentUser(socket.id);
-    const userLanguage = getCurrentUserAndLanguage(language);
-
-   
 
     const translationClient = new TranslationServiceClient();
-
     const projectId = 'bitirme-projesi-348016';
     const location = 'global';
     const text = msg;
-    
-    /*const translate = new Translate();
-    const textSecond = msg;
 
-    async function detectLanguage() {
-        let [detections] = await translate.detect(textSecond);
-        detections = Array.isArray(detections) ? detections : [detections];
-        console.log('Detections:');
-        detections.forEach(detection => {
-            console.log(`${detection.input} => ${detection.language}`);
-        });
-    };
-    detectLanguage();*/
+
   
     async function translateText() {
         const request = {
@@ -72,13 +57,14 @@ io.on('connection', (socket, language)=>{
             sourceLanguageCode: `${user.language}`,
             targetLanguageCode: 'en',
         };
-    const [response] = await translationClient.translateText(request);
-
-    for (const translation of response.translations) {
-        socket.emit('message',formatMessage(user.username, msg)); // only sender
-        socket.broadcast.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`)); //except sender
-        console.log(`Translation: ${translation.translatedText}`);
-    }
+    
+        const [response] = await translationClient.translateText(request);
+    
+        for (const translation of response.translations) {
+            socket.emit('message',formatMessage(user.username, msg)); // only sender
+            socket.broadcast.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`)); //except sender
+            console.log(`Translation: ${translation.translatedText}`);
+        }
 }
     translateText();
     });
@@ -154,6 +140,7 @@ app.use(express.urlencoded({extended: true}))
 
 const res = require('express/lib/response');
 const { $where } = require('./src/model/user_model');
+const { resolveAny } = require('dns');
 
 app.get('/', (req, res) =>{
     res.json({mesaj : 'Merhaba'});
