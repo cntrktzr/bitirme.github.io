@@ -70,7 +70,7 @@ io.on('connection', (socket, language)=>{
             contents: [text],
             mimeType: 'text/html',
             sourceLanguageCode: `${user.language}`,
-            targetLanguageCode: `${user.language}`,
+            targetLanguageCode: 'en',
         };
     const [response] = await translationClient.translateText(request);
 
