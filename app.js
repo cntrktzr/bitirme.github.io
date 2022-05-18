@@ -8,7 +8,7 @@ const http=require('http');
 const socketio=require('socket.io');
 const formatMessage=require('./public/admin/js/messages');
 const { format } = require('path');
-const  {userJoin,getCurrentUser, getCurrentUserLanguage, getRoomUsers,userLeave}=require('./public/admin/js/users');
+const  {userJoin,getCurrentUser, getRoomUsers,userLeave}=require('./public/admin/js/users');
 const server=http.createServer(app);
 const io=socketio(server);
 const PORT = 3000 || process.env.PORT;
@@ -45,7 +45,7 @@ io.on('connection', (socket)=>{
     socket.on('chatMessage',(msg)=>{
     const user=getCurrentUser(socket.id);
    
-    const translate = new Translate();
+    /*const translate = new Translate();
     const textSecond = `${user.language}`;
 
     async function detectLanguage() {
@@ -56,28 +56,34 @@ io.on('connection', (socket)=>{
             console.log(`${detection.input} => ${detection.language}`);
         });
     };
-    detectLanguage();
+    detectLanguage();*/
 
     const translationClient = new TranslationServiceClient();
 
     const projectId = 'bitirme-projesi-348016';
     const location = 'global';
     const text = msg;
+    const lang = ['tr', 'en,', 'it', 'fr', 'de', 'es'];
 
+    if(lang == `${user.language}`) {
+        
+    }
     async function translateText() {
         const request = {
             parent: `projects/${projectId}/locations/${location}`,
             contents: [text],
             mimeType: 'text/html',
             sourceLanguageCode: `${user.language}`,
-            targetLanguageCode: 'en',
+            targetLanguageCode: 'en' ,
         };
     const [response] = await translationClient.translateText(request);
 
     for (const translation of response.translations) {
 
         if(`${user.language}` !== 'en'){
-            io.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`));
+            //io.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`));
+            socket.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`));
+
         }
         
         
@@ -87,6 +93,7 @@ io.on('connection', (socket)=>{
     translateText();
 
     io.to(user.room).emit('message',formatMessage(user.username, msg));
+    //io.to(user.room).emit('output',formatMessage(user.username, msg));
     });
 
      // User disconnects

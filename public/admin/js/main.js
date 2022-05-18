@@ -27,25 +27,31 @@ socket.on('message', message=>{
     console.log(message);
 
     outputMessage(message);
+    
 
     chatMessages.scrollTop=chatMessages.scrollHeight;
 });
 
-//Submit the form
+//Submit the form (Handwriting)
 chatForm.addEventListener('submit',(e)=>{
     e.preventDefault();
-
     //gettting the message
     const msg = e.target.elements.msg.value;
-
-    
-
     //Emit message to the server
     socket.emit('chatMessage', msg);
-
     e.target.elements.msg.value='';
     e.target.elements.msg.focus();
+});
 
+// Submit the form (Voice Recognition)
+chatForm.addEventListener('submit',(e)=>{
+    e.preventDefault();
+    //gettting the message
+    const output = e.target.elements.output.value;
+    //Emit message to the server
+    socket.emit('chatMessage', output);
+    e.target.elements.output.value='';
+    e.target.elements.output.focus();
 });
 
 

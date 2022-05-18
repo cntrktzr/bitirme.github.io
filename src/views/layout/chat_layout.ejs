@@ -18,6 +18,7 @@
           <div class="chat-sidebar">
             <!--<h3><i class="fas fa-comments"></i> Select language</h3>-->
             <!--<div id='google_translate_element'></div>-->
+            
             <h3><i class="fas fa-comments"></i> Room Name:</h3>
             <h2 id="room-name"></h2>
             <h3><i class="fas fa-users"></i> Users</h3>
@@ -28,21 +29,48 @@
         <div class="chat-form-container">
           <form id="chat-form">
             <input
-              id="msg"
+              id="output"
               type="text"
               placeholder="Enter Message"
               required
               autocomplete="off"
             />
             <button id="btnTranslate" class="chat-button"><i class="fas fa-paper-plane"></i> Send</button>
-
-            
-
           </form>
         </div>
       </div>
 
-      <!-- Query string library CDN -->
+      <p><button type="button" onclick="SpeechRecog()">Write By Voice</button> &nbsp; <span id="action"></span></p>
+      <div id="output" class="hide"></div>
+
+      <script>
+           function SpeechRecog() {
+                var output = document.getElementById("output");
+                var action = document.getElementById("action");
+                var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
+                var recognition = new SpeechRecognition();
+            
+                // This runs when the speech recognition service starts
+                recognition.onstart = function() {
+                    action.innerHTML = "<small>listening, please speak...</small>";
+                };
+                
+                recognition.onspeechend = function() {
+                    action.innerHTML = "<small>stopped listening, hope you are done...</small>";
+                    recognition.stop();
+                }
+              
+                // This runs when the speech recognition service returns result
+                recognition.onresult = function(event) {
+                    var transcript = event.results[0][0].transcript;
+                    var confidence = event.results[0][0].confidence;
+                    output.value=transcript;
+                };
+              
+                 // start recognition
+                 recognition.start();
+            }
+      </script>
 
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
@@ -59,7 +87,7 @@
 </html>
 
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+<!--<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
 <script type="text/javascript">
     $("#btnTranslate").click(function () {
         var url = "https://translation.googleapis.com/language/translate/v2?key=AIzaSyDi2mALm1ZObsWnOFVwgc-6j59enxrittg";
@@ -70,4 +98,4 @@
             $("#txtTarget").val(data.data.translations[0].translatedText);
         });
     });
-</script>
+</script>-->

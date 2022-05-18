@@ -12,6 +12,10 @@ function getCurrentUser(id){
     return users.find((user)=>user.id===id);
 }
 
+function getCurrentUserAndLanguage(language){
+    return users.find((user)=>user.id===language);
+}
+
 //User leaves chat 
 function userLeave(id){
     const index=users.findIndex(user=>user.id===id);
@@ -37,7 +41,8 @@ module.exports={
     getCurrentUser,
     userLeave,
     getRoomUsers,
-    getLanguage
+    getLanguage,
+    getCurrentUserAndLanguage
 
 
 };
