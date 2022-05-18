@@ -127,9 +127,13 @@ html, body {
 
 
 /* Chat Page  */
+body{
+  overflow: hidden;
+}
 
 .chat-body{
   background-image: linear-gradient(180deg, #7359a2 10%, #271a42 100%);
+  height: 930px;
 }
 
 .chat-container {
@@ -137,6 +141,21 @@ html, body {
 	background: rgba(224, 215, 242, 1);
 	margin: 30px auto;
 	overflow: hidden;
+  animation-name: yukardan;
+	animation-duration: 1s;
+}
+@keyframes yukardan {
+  0% {
+    opacity: 0;
+    transform: translateY(10rem);
+  }
+  80% {
+    transform: translateY(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0);
+  }
 }
 
 .chat-heading{
