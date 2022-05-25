@@ -2,6 +2,7 @@
 
 const chatForm=document.getElementById('chat-form');
 const chatMessages=document.querySelector('.chat-messages');
+const selectedLanguage=document.getElementById('selected-language');
 const roomName=document.getElementById('room-name');
 const userList=document.getElementById('users');
 
@@ -16,7 +17,8 @@ const socket=io();
 socket.emit('joinRoom',{username,room, language});
 
 //Get room and users
-socket.on('roomUsers',({users,room})=>{
+socket.on('roomUsers',({users,room, language})=>{
+    outputLanguage(language);
     outputRoomName(room);
     outputUsers(users);  
     
@@ -66,6 +68,9 @@ function outputMessage(message){
     </p>`;
 
     document.querySelector('.chat-messages').appendChild(div);
+}
+function outputLanguage(language){
+    selectedLanguage.innerText=language;
 }
 
 //Output room name to DOM

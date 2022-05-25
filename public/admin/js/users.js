@@ -28,7 +28,7 @@ function getRoomUsers(room){
 
 //Get User's Language
 function getLanguage(language){
-    return users.filter( user => user.language === language);
+    return users.find( user => user.language === language);
 }
 
 

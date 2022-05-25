@@ -32,6 +32,7 @@ io.on('connection', (socket, language)=>{
 
         // Send users and room info
         io.to(user.room).emit('roomUsers',{
+            language:`${user.language}`,
             room:user.room,
             users:getRoomUsers(user.room),
         });
@@ -40,33 +41,37 @@ io.on('connection', (socket, language)=>{
     
     // Listen for the chat message 
     socket.on('chatMessage',(msg)=>{
-    const user=getCurrentUser(socket.id);
+    const user=getCurrentUser(socket.id, language);
 
-    const translationClient = new TranslationServiceClient();
-    const projectId = 'bitirme-projesi-348016';
-    const location = 'global';
-    const text = msg;
+    if(`${user.language}` == 'en'){
+        socket.emit('message' , formatMessage(user.username, msg));
 
+    }
+    else {
+        const translationClient = new TranslationServiceClient();
+        const projectId = 'bitirme-projesi-348016';
+        const location = 'global';
+        const text = msg;
 
-  
-    async function translateText() {
-        const request = {
-            parent: `projects/${projectId}/locations/${location}`,
-            contents: [text],
-            mimeType: 'text/html',
-            sourceLanguageCode: `${user.language}`,
-            targetLanguageCode: 'en',
-        };
-    
-        const [response] = await translationClient.translateText(request);
-    
-        for (const translation of response.translations) {
-            socket.emit('message',formatMessage(user.username, msg)); // only sender
-            socket.broadcast.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`)); //except sender
-            console.log(`Translation: ${translation.translatedText}`);
+        async function translateText() {
+            const request = {
+                parent: `projects/${projectId}/locations/${location}`,
+                contents: [text],
+                mimeType: 'text/html',
+                sourceLanguageCode: `${user.language}`,
+                targetLanguageCode: 'en',
+            };
+            const [response] = await translationClient.translateText(request);
+        
+            for (const translation of response.translations) {
+                socket.emit('message',formatMessage(user.username, msg)); // only sender
+                socket.broadcast.to(user.room).emit('message',formatMessage(user.username,`${translation.translatedText}`)); //except sender
+                console.log(`Translation: ${translation.translatedText}`);
+            }
         }
-}
-    translateText();
+        translateText();  
+    }
+    
     });
 
      // User disconnects
