@@ -5,6 +5,7 @@ const chatMessages=document.querySelector('.chat-messages');
 const selectedLanguage=document.getElementById('selected-language');
 const roomName=document.getElementById('room-name');
 const userList=document.getElementById('users');
+const textAudio=document.getElementById('text-audio');
 
 const { username, room, language}= Qs.parse(location.search,{
     ignoreQueryPrefix:true
@@ -72,6 +73,19 @@ function outputMessage(message){
 function outputLanguage(language){
     selectedLanguage.innerText=language;
 }
+function textToAudio(){
+    let message = document.getElementById('mesaj').value;    
+    let speech = new SpeechSynthesisUtterance();
+    speech.lang = "en-US";
+                   
+    speech.text = message;
+    speech.volume = 1;
+    speech.rate = 1;
+    speech.pitch = 1;
+          
+    window.speechSynthesis.speak(speech);
+    textAudio.textToAudio=message;
+}
 
 //Output room name to DOM
 function outputRoomName(room){
@@ -83,7 +97,3 @@ function outputUsers(users){
     ${users.map(user=>`<li>${user.username}</li>`).join('')}
     `;
 }
-
-
-
-

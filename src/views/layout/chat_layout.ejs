@@ -16,6 +16,8 @@
         </header>
         <main class="chat-main">
           <div class="chat-sidebar">
+            <h3><i class="fas fa-comments"></i> Selected Languages:</h3>
+            <h2 id="selected-language"></h2>
             <!--<h3><i class="fas fa-comments"></i> Select language</h3>-->
             <!--<div id='google_translate_element'></div>-->
             
@@ -42,6 +44,7 @@
 
       <p><button type="button" onclick="SpeechRecog()">Write By Voice</button> &nbsp; <span id="action"></span></p>
       <div id="output" class="hide"></div>
+      <div><button id="text-audio" class="imaj" type="button" onclick="textToAudio()"><img src="images/speaker.png" ></button ></div>
 
       <script>
            function SpeechRecog() {
@@ -49,24 +52,20 @@
                 var action = document.getElementById("action");
                 var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition;
                 var recognition = new SpeechRecognition();
-            
                 // This runs when the speech recognition service starts
                 recognition.onstart = function() {
                     action.innerHTML = "<small>listening, please speak...</small>";
                 };
-                
                 recognition.onspeechend = function() {
                     action.innerHTML = "<small>stopped listening, hope you are done...</small>";
                     recognition.stop();
                 }
-              
                 // This runs when the speech recognition service returns result
                 recognition.onresult = function(event) {
                     var transcript = event.results[0][0].transcript;
                     var confidence = event.results[0][0].confidence;
                     output.value=transcript;
                 };
-              
                  // start recognition
                  recognition.start();
             }
@@ -77,11 +76,8 @@
       <script src="admin/js/main.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.js"	crossorigin="anonymous"></script>	
       <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-      <script src="admin/js/translate.js"></script>
-			
+
 
     </body>
-
-    
 </html>
 
