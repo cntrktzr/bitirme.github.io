@@ -44,7 +44,7 @@
 
       <p><button type="button" onclick="SpeechRecog()">Write By Voice</button> &nbsp; <span id="action"></span></p>
       <div id="output" class="hide"></div>
-      <div><button id="text-audio" class="imaj" type="button" onclick="textToAudio()"><img src="images/speaker.png" ></button ></div>
+     
 
       <script>
            function SpeechRecog() {
@@ -71,13 +71,27 @@
             }
       </script>
 
+      <!--<script>
+          function textToAudio(){
+          let textTarget = document.getElementById('txtTarget').value;    
+          let speech = new SpeechSynthesisUtterance();
+          speech.lang = "en-US";
+                        
+          speech.text = textTarget;
+          speech.volume = 1;
+          speech.rate = 1;
+          speech.pitch = 1;
+                
+          window.speechSynthesis.speak(speech);
+        }
+      </script>-->
+
       <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js" integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w==" crossorigin="anonymous"></script>
       <script src="/socket.io/socket.io.js"></script>
       <script src="admin/js/main.js"></script>
       <script src="https://code.jquery.com/jquery-3.6.0.js"	crossorigin="anonymous"></script>	
       <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
-
+      
 
     </body>
 </html>
-

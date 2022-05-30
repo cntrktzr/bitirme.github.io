@@ -5,7 +5,8 @@ const chatMessages=document.querySelector('.chat-messages');
 const selectedLanguage=document.getElementById('selected-language');
 const roomName=document.getElementById('room-name');
 const userList=document.getElementById('users');
-const textAudio=document.getElementById('text-audio');
+const speakText=document.getElementById('txtTarget');
+const msg3 = document.getElementById('mesaj');
 
 const { username, room, language}= Qs.parse(location.search,{
     ignoreQueryPrefix:true
@@ -66,26 +67,31 @@ function outputMessage(message){
     div.innerHTML=` <p class="meta">${message.username}<span>${message.time}</span></p>
     <p id="mesaj" class="text">
         ${message.textMessage}
+        <button id="text-audio" class="imaj" type="button" onclick="textToAudio()"><img src="admin/img/hoparlor.jpeg" ></button>
+        
     </p>`;
 
     document.querySelector('.chat-messages').appendChild(div);
 }
-function outputLanguage(language){
-    selectedLanguage.innerText=language;
-}
-function textToAudio(){
-    let message = document.getElementById('mesaj').value;    
+
+function textToAudio( ){
+    let textMessage = `${message.textMessage}`;
     let speech = new SpeechSynthesisUtterance();
     speech.lang = "en-US";
-                   
-    speech.text = message;
+                  
+    speech.text = textMessage;
     speech.volume = 1;
     speech.rate = 1;
     speech.pitch = 1;
           
     window.speechSynthesis.speak(speech);
-    textAudio.textToAudio=message;
+  }
+
+
+function outputLanguage(language){
+    selectedLanguage.innerText=language;
 }
+
 
 //Output room name to DOM
 function outputRoomName(room){
