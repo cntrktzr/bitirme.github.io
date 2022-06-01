@@ -5,8 +5,6 @@ const chatMessages=document.querySelector('.chat-messages');
 const selectedLanguage=document.getElementById('selected-language');
 const roomName=document.getElementById('room-name');
 const userList=document.getElementById('users');
-const speakText=document.getElementById('txtTarget');
-const msg3 = document.getElementById('mesaj');
 
 const { username, room, language}= Qs.parse(location.search,{
     ignoreQueryPrefix:true
@@ -29,10 +27,7 @@ socket.on('roomUsers',({users,room, language})=>{
 // Catch the message here
 socket.on('message', message=>{
     console.log(message);
-
     outputMessage(message);
-    
-
     chatMessages.scrollTop=chatMessages.scrollHeight;
 });
 
@@ -58,34 +53,36 @@ chatForm.addEventListener('submit',(e)=>{
     e.target.elements.output.focus();
 });
 
-
-// Output message to DOM
+// Output message to    
 function outputMessage(message){
     const div = document.createElement('div');
-
+    
     div.classList.add('message');
-    div.innerHTML=` <p class="meta">${message.username}<span>${message.time}</span></p>
+    console.log(`Ahmet ${message.textMessage}`)
+    div.innerHTML=` <body>
+    <p class="meta">${message.username}<span>${message.time}</span></p>
     <p id="mesaj" class="text">
         ${message.textMessage}
-        <button id="text-audio" class="imaj" type="button" onclick="textToAudio()"><img src="admin/img/hoparlor.jpeg" ></button>
-        
-    </p>`;
-
+        <button id="text-audio" class="imaj" type="button" onclick="textToAudio()"><img src="admin/img/hoparlor.jpeg" ></button>   
+    </p>
+    </body>`;
+    
     document.querySelector('.chat-messages').appendChild(div);
-}
+}    
 
-function textToAudio( ){
-    let textMessage = `${message.textMessage}`;
+function textToAudio() {
+    const text = document.getElementById('mesaj').value;
     let speech = new SpeechSynthesisUtterance();
     speech.lang = "en-US";
-                  
-    speech.text = textMessage;
+        
+    speech.text = text;
     speech.volume = 1;
     speech.rate = 1;
     speech.pitch = 1;
-          
+    
     window.speechSynthesis.speak(speech);
-  }
+}
+
 
 
 function outputLanguage(language){
