@@ -8,42 +8,43 @@ html {
   }
 body{
     background: url(../img/1920back.png) no-repeat;
-    width: 1920px;
-    height: 2945px;
-    padding-left: 235px;
-    padding-right: 235px;
-    padding-top: 50px;
-    padding-bottom: 50px;
+    background-size: 100% auto;
+    width: 100%;
+    height: auto;
+    padding-left: 12.24%;
+    padding-right: 12.24%;
+    padding-top: 5%;
+    padding-bottom: 5%;
 }
 main{
-    padding-top: 90px;
-    padding-bottom: 50px;
+    padding-top:  9.68vh;
+    padding-bottom: 5.38vh;
 }
 header{
     display: flex;
 }
 .nav-menu li{
     display: flex;
-    padding-top: 19px;
+    padding-top: 2.045vh;
 }
 .ul1 a{
     text-decoration: none;
     color: rgba(43,35,61,1);
     font-family: 'Fira Sans Condensed', sans-serif;
-    padding: 20px;
-    font-size: 24px;
+    padding: 2.087vmin;
+    font-size: 1.5vw;
 }
 .ul1 a:hover{
     background-color: rgba(224, 215, 242,1);
-    border-radius: 10px;
+    border-radius: 0.7vw;
     font-weight: bold;
 }
 .ul2 a{
     text-decoration: none;
     color: white;
     font-family: 'Fira Sans Condensed', sans-serif;
-    padding: 20px;
-    font-size: 24px;
+    padding: 1.041vmin;
+    font-size: 1.5vw;
 }
 .ul2 a:hover{
     font-weight: bold;
@@ -52,14 +53,14 @@ header{
     background-color: transparent;
     color: rgba(43,35,61,1);
     font-family: 'Fira Sans Condensed', sans-serif;
-    padding: 20px;
-    font-size: 24px;
+    padding: 1.041vmin;
+    font-size: 1.5vw;
     border: none;
     cursor: pointer;
 }
   
 .dropdown {
-    margin-top: -20px;
+    margin-top: -1.041vmin;
     position: relative;
     display: inline-block;
 }
@@ -68,19 +69,19 @@ header{
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 170px;
+    min-width: 17.75vw;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
-    border-radius: 10px;
+    border-radius: 0.7vw;
 }
   
 .dropdown-content a {
     color: rgba(43,35,61,1);
-    padding: 12px 16px;
+    padding: 1.25vw 1.67vw;
     text-decoration: none;
     display: block;
     font-family: 'Fira Sans Condensed', sans-serif;
-    font-size: 18px;
+    font-size: 1.88vw
 }
   
 .dropdown-content a:hover {
@@ -93,43 +94,39 @@ header{
   
 .dropdown:hover .dropbtn {
     background-color: rgba(224, 215, 242,1);
-    border-radius: 10px;
+    border-radius: 0.7vw;
     font-weight: bold;
 }
 .button{
-  width: 150px; ;
   background-color: rgba(115, 88, 161,1);
   border: none;
-  border-radius: 10px;
+  border-radius: 0.7vw;
   color: white;
   text-align: center;
   text-decoration: none;
   font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: 24px;
-  padding-top: 15px;
-  padding-bottom: 15px;
+  font-size: 1.3vw;
+  padding: 0.78vmin;
   cursor: pointer;
   margin: auto;
   display: block;
-  margin-top: -15px;
+  margin-top: -0.78vw;
 }
 .button:hover{
-    width: 150px; ;
     background-color: rgba(224, 215, 242,1);
     border: none;
-    border-radius: 10px;
+    border-radius: 0.7vw;
     color: rgba(43,35,61,1);
     text-align: center;
     text-decoration: none;
     font-family: 'Fira Sans Condensed', sans-serif;
     font-weight: bold;
-    font-size: 24px;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    font-size: 1.3vw;
+    padding: 0.78vw;
     cursor: pointer;
     margin: auto;
     display: block;
-    margin-top: -15px;
+    margin-top: -0.78vw;
   }
 .giris{
     display: flex;
@@ -141,123 +138,123 @@ header{
     position: absolute;
     font-family: 'Fira Sans', sans-serif;
     font-weight: 600;
-    font-size: 40px;
-    top: 250px;
-    left: 150px;
+    font-size: 2.08vw;
+    top: 13.02vw;
+    left: 7.8125vw;
 }
 .second-part{
     display: flex;
-    padding-top: 150px;
+    padding-top: 7.8125vw;
 }
 .paragraf{
     text-align: center;
     font-family: 'Fira Sans', sans-serif;
-    font-size: 36px;
-    margin-top: 50px;
+    font-size: 1.875vw;
+    margin-top:  2.6041vw;
     line-height: normal;
     color: rgba(224, 215, 242,1);
 }
 .centered1{
-    padding: 30px;
+    padding:  1.5625vw;
     display: inline-block;
 }
 .centered2{
-    padding-left: 100px;
+    padding-left: 5.2083vw;
 }
 .button2{
     background-color: rgba(224, 215, 242,1);
     border: none;
-    border-radius: 10px;
+    border-radius: 0.7vw;
     color: rgba(43,35,61,1);
     text-align: center;
     text-decoration: none;
     font-family: 'Fira Sans', sans-serif;
-    font-size: 37px;
+    font-size: 1.927vw;
     font-style: italic;
     cursor: pointer;
-    padding: 15px 32px;
+    padding: 0.78vw 1.56vw;
   }
   .button2:hover{
     background-color: rgba(43,35,61,1);
     border: none;
-    border-radius: 10px;
+    border-radius:0.7vw;
     color: rgba(224, 215, 242,1);
     font-weight: bold;
     text-align: center;
     text-decoration: none;
     font-family: 'Fira Sans', sans-serif;
-    font-size: 37px;
+    font-size: 1.927vw;
     font-style: italic;
     cursor: pointer;
-    padding: 15px 32px;
+    padding: 0.78vw 1.56vw;
   }
   .özellikler{
-      margin-top: 100px;
+      margin-top: 5.2083vw;
   }
   .button3{
     background-color: rgba(43,35,61,1);
     border: none;
-    border-radius: 10px;
+    border-radius: 0.7vw;
     color: white;
     text-align: center;
     text-decoration: none;
     font-family: 'Fira Sans Condensed', sans-serif;
-    font-size: 24px;
+    font-size: 1.5vw;
     cursor: pointer;
-    padding: 15px 32px;
+    padding: 0.78vw 1.56vw;
     opacity: 0.5;
   }
   .button3:hover{
     background-color: rgba(224, 215, 242,1);
     border: none;
-    border-radius: 10px;
+    border-radius: 0.7vw;
     color: rgba(43,35,61,1);
     font-weight: bold;
     text-align: center;
     text-decoration: none;
     font-family: 'Fira Sans Condensed', sans-serif;
-    font-size: 24px;
+    font-size: 1.5vw;
     cursor: pointer;
-    padding: 15px 32px;
+    padding: 0.78vw 1.56vw;
     opacity: 0.5;
   }
   .video{
-      width: 742px;
-      height: 464px;
+      width: 38.645vw;
+      height: 24.166vw;
       background-color: rgba(224, 215, 242,1);
       border: none;
-      border-radius: 10px;
+      border-radius: 0.7vw;
       margin: auto;
-      margin-top: 150px;
+      margin-top: 7.8125vw;
       position: relative;
   }
   .testvideo{
       font-family: 'Fira Sans Condensed', sans-serif;
       color: rgba(115, 88, 161,1);
-      font-size: 25px;
+      font-size:1.302vw;
       font-weight: 600;
-      margin-left: 18px;
+      margin-left: 0.9375vw;
   }
   .videostop:hover{
       filter: hue-rotate(90deg)
   }
   .b-logo{
-      width: 100px;
+      width: 5.2083vw;
       height: auto;
-      margin-left: 680px;
-      margin-bottom: 30px;
+      margin-left: 35.416vw;
+      margin-bottom: 1.5625vw;
   }
   .maddeler{
       display: flex;
-      margin-left: 420px;
-      margin-bottom: 30px;
+      margin-left: 21.875vw;
+      margin-bottom: 1.5625vw;
   }
   .maddeler ul a{
-      font-size: 30px;
+      font-size: 1.5625vw;
       font-family: 'Fira Sans Condensed', sans-serif;
       text-decoration: none;
       color: white;
-      padding: 30px;
+      padding: 1.5625vw;
   }
   .maddeler ul a:hover{
       font-weight: bold;
@@ -266,20 +263,20 @@ header{
   .social-media{
       display: flex;
       margin: auto;
-      margin-left: 620px;
+      margin-left:  32.2916vw;
   }
   .social-media ul a {
       color: white;
-      font-size: 23px;
-      padding: 20px;
+      font-size: 1.1979vw;
+      padding: 1.0416vw;
   }
   .social-media ul a:hover i{
       transform: scale(1.5);
   }
   .en-alt{
-      width: 1450px;
+      width: 75.52vw;
       display: block;
-      margin-top: 100px;
+      margin-top: 5.2083vw;
   }
   .sol-kay{
     animation-name: moveInLeft;
