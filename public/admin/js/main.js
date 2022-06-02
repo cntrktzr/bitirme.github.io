@@ -54,32 +54,65 @@ chatForm.addEventListener("submit", (e) => {
 
 // Output message to
 function outputMessage(message) {
-  const div = document.createElement("div");
+  if (message.type == "system" || message.language == language) {
+    const div = document.createElement("div");
 
-  div.classList.add("message");
-  console.log(`Ahmet ${message.textMessage}`);
-  div.innerHTML = ` <body>
-    <p class="meta">${message.username}<span>${message.time}</span></p>
-    <p id="mesaj" class="text">
-        ${message.textMessage}
-        <button id="text-audio" class="imaj" type="button" onclick="textToAudio()"><img src="admin/img/hoparlor.jpeg" ></button>   
-    </p>
-    </body>`;
+    div.classList.add("message");
+    console.log(`Ahmet ${message.translatedText}`);
+    div.innerHTML =
+      ` <body>
+            <p class="meta">${message.textMessage}<span>${message.time}</span></p>
+            <p id="mesaj" class="text">
+                ${message.textMessage}
+                <button id="text-audio" class="imaj" type="button" onclick="textToAudio(` +
+      "`" +
+      message.textMessage +
+      "`" +
+      ",'" +
+      message.language +
+      `')"><img src="admin/img/hoparlor.jpeg" ></button>   
+            </p>
+            </body>`;
 
-  document.querySelector(".chat-messages").appendChild(div);
+    document.querySelector(".chat-messages").appendChild(div);
+  }
 }
 
-function textToAudio() {
-  const text = document.getElementById("mesaj").value;
+function textToAudio(message, lang) {
   let speech = new SpeechSynthesisUtterance();
-  speech.lang = "en-US";
+  speech.lang = getLang(lang);
 
-  speech.text = text;
+  speech.text = message;
   speech.volume = 1;
   speech.rate = 1;
   speech.pitch = 1;
 
   window.speechSynthesis.speak(speech);
+}
+
+function getLang(language) {
+  let lang = "en-US";
+  switch (language) {
+    case "en":
+      lang = "en-US";
+      break;
+    case "tr":
+      lang = "tr-TR";
+      break;
+    case "fr":
+      lang = "fr-FR";
+      break;
+    case "es":
+      lang = "es-ES";
+      break;
+    case "it":
+      lang = "it-IT";
+      break;
+    case "de":
+      lang = "de-DE";
+      break;
+  }
+  return lang;
 }
 
 function outputLanguage(language) {

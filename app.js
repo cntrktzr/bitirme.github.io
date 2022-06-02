@@ -33,7 +33,10 @@ io.on("connection", (socket, language) => {
       "message",
       formatMessage(
         admin,
-        `Welcome to the chat :). Your selected language is "${user.language}".`
+        admin,
+        user.language,
+        `Welcome to the chat :). Your selected language is ${user.language}.`,
+        "system"
       )
     );
 
@@ -41,7 +44,13 @@ io.on("connection", (socket, language) => {
       .to(user.room)
       .emit(
         "message",
-        formatMessage(admin, `${user.username} has joined the chat!`)
+        formatMessage(
+          admin,
+          admin,
+          user.language,
+          `${user.username} has joined the chat!`,
+          "system"
+        )
       );
 
     // Send users and room info
@@ -56,37 +65,65 @@ io.on("connection", (socket, language) => {
   socket.on("chatMessage", (msg) => {
     const user = getCurrentUser(socket.id, language);
 
-    if (`${user.language}` == "en") {
-      socket.emit("message", formatMessage(user.username, msg));
-    } else {
-      const translationClient = new TranslationServiceClient();
-      const projectId = "bitirme-projesi-348016";
-      const location = "global";
-      const text = msg;
+    const languageArr = ["en", "es", "de", "fr", "it", "tr"];
 
-      async function translateText() {
-        const request = {
-          parent: `projects/${projectId}/locations/${location}`,
-          contents: [text],
-          mimeType: "text/html",
-          sourceLanguageCode: `${user.language}`,
-          targetLanguageCode: "en",
-        };
-        const [response] = await translationClient.translateText(request);
+    languageArr.forEach((language) => {
+      if (`${user.language}` == language) {
+        if (
+          ["Null", "null", "nul", "nullo", "nulo", "hükümsüz"].indexOf(
+            String(msg)
+          ) == -1
+        ) {
+          socket.emit(
+            "message",
+            formatMessage(user.username, user, language, msg)
+          );
 
-        for (const translation of response.translations) {
-          socket.emit("message", formatMessage(user.username, msg)); // only sender
           socket.broadcast
             .to(user.room)
-            .emit(
-              "message",
-              formatMessage(user.username, `${translation.translatedText}`)
-            ); //except sender
-          console.log(`Translation: ${translation.translatedText}`);
+            .emit("message", formatMessage(user.username, user, language, msg)); //except sender
         }
+      } else {
+        const translationClient = new TranslationServiceClient();
+        const projectId = "bitirme-projesi-348016";
+        const location = "global";
+        const text = msg;
+        async function translateText() {
+          const request = {
+            parent: `projects/${projectId}/locations/${location}`,
+            contents: [text],
+            mimeType: "text/html",
+            sourceLanguageCode: `${user.language}`,
+            targetLanguageCode: language,
+          };
+          const [response] = await translationClient.translateText(request);
+
+          for (const translation of response.translations) {
+            if (
+              ["Null", "null", "nul", "nullo", "nulo", "hükümsüz"].indexOf(
+                translation.translatedText.toString()
+              ) == -1
+            ) {
+              socket.broadcast
+                .to(user.room)
+                .emit(
+                  "message",
+                  formatMessage(
+                    user.username,
+                    user,
+                    language,
+                    `${translation.translatedText}`
+                  )
+                ); //except sender
+            }
+
+            console.log(`Translation: ${translation.translatedText}`);
+          }
+        }
+
+        translateText();
       }
-      translateText();
-    }
+    });
   });
 
   // User disconnects
