@@ -81,7 +81,7 @@ function outputMessage(message) {
     console.log(`Ahmet ${message.translatedText}`);
     div.innerHTML =
       ` <body>
-            <p class="meta">${message.textMessage}<span>${message.time}</span></p>
+      <p class="meta">${message.username}<span>  ${message.time}</span></p>
             <p id="mesaj" class="text">
                 ${message.textMessage}
                 <button id="text-audio" class="imaj" type="button" onclick="textToAudio(` +
