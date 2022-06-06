@@ -5,6 +5,7 @@ const chatMessages = document.querySelector(".chat-messages");
 const selectedLanguage = document.getElementById("selected-language");
 const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
+const handButton = document.getElementById("btnHand");
 
 const { username, room, language } = Qs.parse(location.search, {
   ignoreQueryPrefix: true,
@@ -50,6 +51,25 @@ chatForm.addEventListener("submit", (e) => {
   socket.emit("chatMessage", output);
   e.target.elements.output.value = "";
   e.target.elements.output.focus();
+});
+
+handButton.addEventListener("click", (e) => {
+  const handBtn = document.getElementById("btnHand");
+  let hand = true;
+
+  if (!handBtn.classList.contains("btn-hand-yellow")) {
+    handBtn.classList.add("btn-hand-yellow");
+    handBtn.classList.remove("btn-hand-black");
+
+    hand = true;
+  } else {
+    handBtn.classList.add("btn-hand-black");
+    handBtn.classList.remove("btn-hand-yellow");
+
+    hand = false;
+  }
+  //Emit message to the server
+  socket.emit("hand", username, room, hand);
 });
 
 // Output message to
@@ -126,6 +146,23 @@ function outputRoomName(room) {
 
 function outputUsers(users) {
   userList.innerHTML = `
-    ${users.map((user) => `<li>${user.username}</li>`).join("")}
+    ${users
+      .map(
+        (user) =>
+          `<li>${user.username} <i id='${user.username}' style="color: yellow" class="fa fa-hand-paper hidden"></i> <span id='${user.username}-badge' class="hidden badge">${user.badge}</span></li>`
+      )
+      .join("")}
     `;
+
+  users.map((user) => {
+    const handIcon = document.getElementById(user.username);
+    const badge = document.getElementById(user.username + "-badge");
+    if (user.hand) {
+      handIcon.classList.remove("hidden");
+      badge.classList.remove("hidden");
+    } else {
+      handIcon.classList.add("hidden");
+      badge.classList.add("hidden");
+    }
+  });
 }

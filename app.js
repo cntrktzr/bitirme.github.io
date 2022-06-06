@@ -13,6 +13,7 @@ const {
   getCurrentUser,
   getRoomUsers,
   userLeave,
+  userHandChange,
 } = require("./public/admin/js/users");
 const server = http.createServer(app);
 const io = socketio(server);
@@ -58,6 +59,13 @@ io.on("connection", (socket, language) => {
       language: `${user.language}`,
       room: user.room,
       users: getRoomUsers(user.room),
+    });
+  });
+
+  socket.on("hand", (username, room, hand) => {
+    io.to(room).emit("roomUsers", {
+      room: room,
+      users: userHandChange(room, username, hand),
     });
   });
 
