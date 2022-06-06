@@ -1,7 +1,6 @@
-const router = require('express').Router();
-const girisController = require('../controllers/giris_controller')
+const router = require("express").Router();
+const girisController = require("../controllers/giris_controller");
 
-router.get('/', girisController.showGiris);
-
+router.get("/", girisController.showGiris);
 
 module.exports = router;

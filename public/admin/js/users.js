@@ -1,5 +1,4 @@
 let users = [];
-
 //Join user to chat
 function userJoin(id, username, room, language, hand = false, badge = 0) {
   const user = { id, username, room, language, hand, badge };
