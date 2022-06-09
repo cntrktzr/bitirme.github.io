@@ -2,7 +2,7 @@
 
 const chatForm = document.getElementById("chat-form");
 const chatMessages = document.querySelector(".chat-messages");
-const selectedLanguage = document.getElementById("selected-language");
+//const selectedLanguage = document.getElementById("selected-language");
 const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
 const handButton = document.getElementById("btnHand");
@@ -19,7 +19,7 @@ socket.emit("joinRoom", { username, room, language });
 
 //Get room and users
 socket.on("roomUsers", ({ users, room, language }) => {
-  outputLanguage(language);
+ //outputLanguage(language);
   outputRoomName(room);
   outputUsers(users);
 });
@@ -135,9 +135,9 @@ function getLang(language) {
   return lang;
 }
 
-function outputLanguage(language) {
+/*function outputLanguage(language) {
   selectedLanguage.innerText = language;
-}
+}*/
 
 //Output room name to DOM
 function outputRoomName(room) {
