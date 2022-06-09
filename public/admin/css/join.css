@@ -128,17 +128,18 @@ body {
 }
 
 .chat-body {
-  background-image: linear-gradient(180deg, #7359a2 10%, #271a42 100%);
+  background-image: linear-gradient(0deg, rgba(44,35,61,1) 41%, rgba(115,90,163,1) 100%);
   height: 930px;
 }
 
 .chat-container {
   max-width: 75%;
-  background: rgba(224, 215, 242, 1);
+  background: white;
   margin: 30px auto;
   overflow: hidden;
   animation-name: yukardan;
   animation-duration: 1s;
+  border-radius: 1vw;
 }
 @keyframes yukardan {
   0% {
@@ -155,14 +156,16 @@ body {
 }
 
 .chat-heading {
-  color: #0f3057;
+  color: #2c233d;
   font-size: 2.5em;
   padding-bottom: 10px;
   letter-spacing: 0.6rem;
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 600;
 }
 
 .chat-header {
-  background: rgba(224, 215, 242, 0.6);
+  background: white;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
   padding: 15px;
@@ -174,14 +177,16 @@ body {
 .chat-main {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  color: rgba(224, 215, 242, 1);
+  color: white;
 }
 
 .chat-sidebar {
-  background: rgba(224, 215, 242, 0.6);
+  background: #e0d7ec;
   color: black;
   padding: 20px 20px 60px;
   overflow-y: scroll;
+  margin: 20px;
+  border-radius: 1vw;
 }
 
 .chat-sidebar h2 {
@@ -203,43 +208,46 @@ body {
   padding: 30px;
   max-height: 500px;
   overflow-y: scroll;
-  color: #fff;
+  color: black;
 }
 
 .chat-messages .message {
   padding: 10px;
   margin-bottom: 15px;
-  background-color: #271a42;
+  background-color:#eaeaec;
   border-radius: 5px;
 }
 
 .chat-messages .message .meta {
   font-size: 15px;
   font-weight: bold;
-  color: rgba(224, 215, 242, 0.6);
+  color: black;
   opacity: 0.7;
   margin-bottom: 7px;
 }
 
 .chat-messages .message .meta span {
-  color: #777;
+  color: rgb(22, 22, 22);
 }
 
 .chat-form-container {
   padding: 20px 30px;
-  background-color: rgba(224, 215, 242, 0.6);
+  background-color: white;
 }
 
 .chat-form-container form {
   display: flex;
+  
 }
 
 .chat-form-container input[type="text"] {
   font-size: 16px;
   padding: 5px;
-  height: 40px;
+  height: 50px;
   flex: 1;
-  border-radius: 10px;
+  border: none;
+  background-color: #eaeaec;
+  border-radius: 0.5vw;
 }
 
 .chat-button {
@@ -247,7 +255,10 @@ body {
   text-transform: uppercase;
   text-decoration: none;
   background: #271a42;
-  padding: 12px;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  padding-top: 0.05vw;
+  padding-bottom: 0.05vw;
   margin-left: 10px;
   border-radius: 5px;
   display: inline-block;
@@ -260,7 +271,7 @@ body {
 
 .btn-hand-yellow {
   color: black !important;
-  background: yellow !important;
+  background: #ee7067 !important;
 }
 
 .btn-hand-black {

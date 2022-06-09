@@ -90,7 +90,7 @@ function outputMessage(message) {
       "`" +
       ",'" +
       message.language +
-      `')"><img src="admin/img/hoparlor.jpeg" ></button>   
+      `')"><i class="fa-solid fa-volume"></i></button>   
             </p>
             </body>`;
 
@@ -149,7 +149,7 @@ function outputUsers(users) {
     ${users
       .map(
         (user) =>
-          `<li>${user.username} <i id='${user.username}' style="color: yellow" class="fa fa-hand-paper hidden"></i> <span id='${user.username}-badge' class="hidden badge">${user.badge}</span></li>`
+          `<li>${user.username} <i id='${user.username}' style="color: #ee7067" class="fa fa-hand-paper hidden"></i> <span id='${user.username}-badge' class="hidden badge">${user.badge}</span></li>`
       )
       .join("")}
     `;
