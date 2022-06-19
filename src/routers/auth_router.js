@@ -23,24 +23,7 @@ router.post(
   authController.register
 );
 
-router.get(
-  "/forget-password",
-  authMiddleware.notLoggedIn,
-  authController.forgetPasswordForm
-);
-router.post(
-  "/forget-password",
-  authMiddleware.notLoggedIn,
-  validatorMiddleware.validateEmail(),
-  authController.forgetPassword
-);
-
 router.get("/verify", authController.verifyMail);
-
-router.get("/reset-password/:id/:token", authController.newPasswordForm);
-router.get("/reset-password", authController.newPasswordForm);
-//router.post('/reset-password', validatorMiddleware.validatePassword (),authController.saveNewPassword);
-
 router.get("/logout", authMiddleware.loggedIn, authController.logout);
 
 module.exports = router;

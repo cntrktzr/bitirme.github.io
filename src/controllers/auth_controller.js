@@ -80,116 +80,20 @@ const register = async (req, res, next) => {
           process.env.CONFIRM_MAIL_JWT_SECRET,
           { expiresIn: "1d" }
         );
-        console.log(jwtToken);
+        //console.log(jwtToken);
 
-        //sending mail
+        //verify account
 
         const url = process.env.WEB_SITE_URL + "verify?id=" + jwtToken;
         console.log("gidilecek url: " + url);
 
-        let transporter = nodemailer.createTransport({
-          service: "gmail",
-          auth: {
-            user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_SIFRE,
-          },
-        });
-
-        await transporter.sendMail(
-          {
-            from: "T&I <info@TandI.com",
-            to: newUser.email,
-            subject: "Please confirm your email",
-            text: "Please click the link to confirm your email " + url,
-          },
-
-          (error, info) => {
-            if (error) {
-              console.log("Hata" + error);
-            }
-            console.log("Mail gönderildi");
-            console.log(info);
-            transporter.close();
-          }
-        );
-
-        req.flash("success_message", [{ msg: "Please check your mailbox." }]);
+        req.flash("success_message", [{ msg: "Please click here to verify your account. " + url} ]);
         res.redirect("/login");
       }
     } catch (err) {}
   }
 };
 
-const forgetPasswordForm = (req, res, next) => {
-  res.render("forget_password", { layout: "./layout/auth_layout.ejs" });
-};
-
-const forgetPassword = async (req, res, next) => {
-  const hatalar = validationResult(req);
-  if (!hatalar.isEmpty()) {
-    req.flash("validation_error", hatalar.array());
-    req.flash("email", req.body.email);
-
-    res.redirect("/forget-password");
-  } else {
-    try {
-      const _user = await User.findOne({
-        email: req.body.email,
-        emailAktif: true,
-      });
-
-      if (_user) {
-        const jwtInfo = {
-          id: _user._id,
-          email: _user.email,
-        };
-        const secret =
-          process.env.RESET_PASSWORD_JWT_SECRET + "-" + _user.password;
-        const jwtToken = jwt.sign(jwtInfo, secret, { expiresIn: "1d" });
-
-        const url =
-          process.env.WEB_SITE_URL +
-          "reset-password/" +
-          _user._id +
-          "/" +
-          jwtToken;
-
-        let transporter = nodemailer.createTransport({
-          service: "gmail",
-          auth: {
-            user: process.env.GMAIL_USER,
-            pass: process.env.GMAIL_SIFRE,
-          },
-        });
-
-        await transporter.sendMail(
-          {
-            from: "T&I <info@TandI.com",
-            to: _user.email,
-            subject: "Reset Password",
-            text: "Please click the link to reset your password " + url,
-          },
-
-          (error, info) => {
-            if (error) {
-              console.log("Hata" + error);
-            }
-            console.log("Mail gönderildi");
-            console.log(info);
-            transporter.close();
-          }
-        );
-
-        req.flash("success_message", [{ msg: "Please check your mailbox." }]);
-        res.redirect("/login");
-      } else {
-        req.flash("validation_error", [{ msg: "E-mail not found" }]);
-        req.flash("email", req.body.email);
-        res.redirect("forget-password");
-      }
-    } catch (err) {}
-  }
-};
 
 const logout = (req, res, next) => {
   req.logout();
@@ -223,7 +127,7 @@ const verifyMail = (req, res, next) => {
 
             if (sonuc) {
               req.flash("success_message", [
-                { msg: "E-mail başarıyla onaylandı" },
+                { msg2: "E-mail başarıyla onaylandı" },
               ]);
               res.redirect("/login");
             } else {
@@ -239,99 +143,14 @@ const verifyMail = (req, res, next) => {
   }
 };
 
-/*const saveNewPassword = async (req, res, next) => {
 
-    const hatalar = validationResult(req);
-    if(!hatalar.isEmpty()){
-
-        req.flash('validation_error', hatalar.array());
-        req.flash('password', req.body.password);
-        req.flash('rpassword', req.body.rpassword);
-
-        console.log("Formdan gelen değerler");
-        console.log(req.body);
-
-        res.redirect('/reset-password/'+req.body.id+"/"+req.body.token);
-    }
-    else{
-        const _bulunanUser = await User.findOne({ _id: req.body.id, emailAktif:true });
-
-        const secret = process.env.RESET_PASSWORD_JWT_SECRET + "-" + _bulunanUser.sifre;
-
-        try {
-            jwt.verify(req.body.token, secret, async (e, decoded) => {
-            
-                if (e) {
-                    req.flash('error', 'Kod Hatalı veya Süresi Geçmiş');
-                    res.redirect('/forget-password');
-                } else {
-                    
-                    const hashedPassword = await bcrypt.hash(req.body.sifre, 10);
-                    const sonuc = await User.findByIdAndUpdate(req.body.id, { sifre : hashedPassword });
-            
-                    if (sonuc) {
-                        req.flash("success_message", [{ msg: 'Başarıyla şifre güncellendi' }]);
-                        res.redirect('/login');
-                    } else {
-                        req.flash("error",'Lütfen tekrar şifre sıfırlama adımlarını yapın');
-                        res.redirect('/login');
-                    }
-                }
-            });
-        } catch (err) {
-            console.log("hata cıktı"+err);
-      }
-
-
-    }
-
-}*/
-
-const newPasswordForm = async (req, res, next) => {
-  const linktekiID = req.params.id;
-  const linktekiToken = req.params.token;
-
-  if (linktekiID && linktekiToken) {
-    const _bulunanUser = await User.findOne({ _id: linktekiID });
-    const secret =
-      process.env.RESET_PASSWORD_JWT_SECRET + "-" + _bulunanUser.password;
-
-    try {
-      jwt.verify(linktekiToken, secret, async (e, decoded) => {
-        if (e) {
-          req.flash("error", "Kod Hatalı veya Süresi Geçmiş");
-          res.redirect("/forget-password");
-        } else {
-          res.render("new_password", { layout: "./layout/auth_layout.ejs" });
-          //console.log("Yeni şifre işin ekran");
-          /*const tokenID = decoded.id;
-                    const sonuc = await User.findByIdAndUpdate(tokenID, {emailAktif : true})
-
-                    if(sonuc){
-                        req.flash("success_message", [{msg : 'E-mail başarıyla onaylandı'}]);
-                        res.redirect('/login');
-                    }else {
-                        req.flash("error", 'Lütfen tekrar kayıt olunuz');
-                        res.redirect('/login');
-                    }*/
-        }
-      });
-    } catch (err) {}
-  } else {
-    req.flash("validation_error", [{ msg: "Lütfen maildeki linke tıklayın" }]);
-    res.redirect("forget-password");
-  }
-};
 
 module.exports = {
   loginForm,
   registerForm,
-  forgetPasswordForm,
   register,
   login,
-  forgetPassword,
   logout,
   verifyMail,
-  newPasswordForm,
-  //saveNewPassword
+
 };
