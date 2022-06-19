@@ -24,11 +24,7 @@ module.exports = function (passport) {
         if (!passwordControl) {
           return done(null, false, { message: "Password is incorrect" });
         } else {
-          if (_foundUser && _foundUser.emailAktif == false) {
-            return done(null, false, { message: "Please verify your email" });
-          } else {
-            return done(null, _foundUser);
-          }
+          return done(null, _foundUser);
         }
       } catch (err) {
         return done(err);

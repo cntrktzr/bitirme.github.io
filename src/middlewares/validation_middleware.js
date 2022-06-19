@@ -55,29 +55,10 @@ const validateEmail = () => {
   return [body("email").trim().isEmail().withMessage("Enter valid e-mail.")];
 };
 
-const validateNewPassword = () => {
-  return [
-    body("password")
-      .trim()
-      .isLength({ min: 8 })
-      .withMessage("Minumum 8 character.")
-      .isLength({ max: 20 })
-      .withMessage("Maximum 20 character."),
 
-    body("rpassword")
-      .trim()
-      .custom((value, { req }) => {
-        if (value !== req.body.password) {
-          throw new Error("Passwords do not match.");
-        }
-        return true;
-      }),
-  ];
-};
 
 module.exports = {
   validateNewUser,
   validateLogin,
   validateEmail,
-  validateNewPassword,
 };
