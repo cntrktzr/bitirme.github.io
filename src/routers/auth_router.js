@@ -23,7 +23,6 @@ router.post(
   authController.register
 );
 
-router.get("/verify", authController.verifyMail);
 router.get("/logout", authMiddleware.loggedIn, authController.logout);
 
 module.exports = router;
