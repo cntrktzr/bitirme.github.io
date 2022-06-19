@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
       integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
       crossorigin="anonymous"
     />
@@ -14,15 +14,18 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="admin/css/join.css" />
-    <script src="https://kit.fontawesome.com/5ce999ceac.js" crossorigin="anonymous"></script>
-    
+    <script
+      src="https://kit.fontawesome.com/5ce999ceac.js"
+      crossorigin="anonymous"
+    ></script>
+
     <title>T&I Meeting</title>
   </head>
   <body class="chat-body">
     <div class="chat-container">
       <header class="chat-header">
         <h1 class="chat-heading">T&I Meeting</h1>
-        <a href="/join" class="btn">Leave Room</a>
+        <a href="/join" class="btn"><i style="font-size: 30px; color: #271a42" class="fas fa-sign-out-alt"></i></a>
       </header>
       <main class="chat-main">
         <div class="chat-sidebar">
@@ -45,13 +48,13 @@
             autocomplete="off"
           />
           <button id="btnTranslate" class="chat-button">
-            <i class="fas fa-paper-plane"></i> 
+            <i class="fas fa-paper-plane"></i>
           </button>
           <button id="btnHand" class="chat-button">
             <i class="fa fa-hand-paper"></i>
           </button>
-          <button  class="chat-button" type="button" onclick="SpeechRecog()">
-            <i class="fa-solid fa-microphone"></i>
+          <button class="chat-button" type="button" onclick="SpeechRecog()">
+            <i class="fas fa-microphone"></i>
           </button>
           &nbsp; <span id="action"></span>
           <div id="output" class="hide"></div>

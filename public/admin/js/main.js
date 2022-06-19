@@ -76,6 +76,7 @@ handButton.addEventListener("click", (e) => {
 function outputMessage(message) {
   if (message.type == "system" || message.language == language) {
     const div = document.createElement("div");
+  
 
     div.classList.add("message");
     console.log(`Ahmet ${message.translatedText}`);
@@ -84,19 +85,21 @@ function outputMessage(message) {
       <p class="meta">${message.username}<span>  ${message.time}</span></p>
             <p id="mesaj" class="text">
                 ${message.textMessage}
-                <button id="text-audio" class="imaj" type="button" onclick="textToAudio(` +
+                <button style="border:none; background-color:transparent" id="text-audio" class="main" type="button" onclick="textToAudio(` +
       "`" +
       message.textMessage +
       "`" +
       ",'" +
       message.language +
-      `')"><i class="fa-solid fa-volume"></i></button>   
+      `')"><i style="font-size:18px;" class="fas fa-volume-up"></i></button>   
             </p>
             </body>`;
 
     document.querySelector(".chat-messages").appendChild(div);
   }
 }
+
+
 
 function textToAudio(message, lang) {
   let speech = new SpeechSynthesisUtterance();
