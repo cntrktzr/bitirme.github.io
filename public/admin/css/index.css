@@ -106,11 +106,11 @@ header {
   text-decoration: none;
   font-family: "Fira Sans Condensed", sans-serif;
   font-size: 1.3vw;
-  padding: 0.78vmin;
+  padding: 1.2vmin;
   cursor: pointer;
   margin: auto;
   display: block;
-  margin-top: -0.78vw;
+  margin-top: -0.5vw;
 }
 .button:hover {
   background-color: rgba(224, 215, 242, 1);
@@ -122,11 +122,11 @@ header {
   font-family: "Fira Sans Condensed", sans-serif;
   font-weight: bold;
   font-size: 1.3vw;
-  padding: 0.78vw;
+  padding: 1.2vmin;
   cursor: pointer;
   margin: auto;
   display: block;
-  margin-top: -0.78vw;
+  margin-top: -0.5vw;
 }
 .giris {
   display: flex;
@@ -159,7 +159,7 @@ header {
   display: inline-block;
 }
 .centered2 {
-  padding-left: 5.2083vw;
+  padding-left: 8vw;
 }
 .button2 {
   background-color: rgba(224, 215, 242, 1);
@@ -276,7 +276,8 @@ header {
 .en-alt {
   width: 75.52vw;
   display: block;
-  margin-top: 5.2083vw;
+  margin-top: 2vw;
+  margin-bottom: -2vw;
 }
 .sol-kay {
   animation-name: moveInLeft;
