@@ -1,6 +1,7 @@
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../model/user_model");
 const bcrypt = require("bcrypt");
+const { Language } = require("@material-ui/icons");
 
 module.exports = function (passport) {
   const options = {
@@ -40,7 +41,15 @@ module.exports = function (passport) {
   passport.deserializeUser(function (id, done) {
     console.log("ID bulundu");
     User.findById(id, function (err, user) {
-      done(err, user);
+      const newUser = {
+        id:user.id,
+        email:user.email,
+        name: user.name,
+        lastname: user.lastname,
+        password: user.password,
+        language: user.language
+      }
+      done(err, newUser);
     });
   });
 };
