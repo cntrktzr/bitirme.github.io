@@ -19,7 +19,7 @@ socket.emit("joinRoom", { username, room, language });
 
 //Get room and users
 socket.on("roomUsers", ({ users, room, language }) => {
- //outputLanguage(language);
+  //outputLanguage(language);
   outputRoomName(room);
   outputUsers(users);
 });
@@ -131,13 +131,30 @@ function getLang(language) {
     case "de":
       lang = "de-DE";
       break;
+    case "ru":
+      lang = "ru-RU";
+      break;
+    case "hi":
+      lang = "hi-HI";
+      break;
+    case "zh":
+      lang = "zh-CN";
+      break;
+    case "pl":
+      lang = "pl-PL";
+      break;
+    case "pt":
+      lang = "pt-PT";
+      break;
+    case "nl":
+      lang = "nl-NL";
+      break;
+    case "ja":
+      lang = "ja-Ja";
+      break;
   }
   return lang;
 }
-
-/*function outputLanguage(language) {
-  selectedLanguage.innerText = language;
-}*/
 
 //Output room name to DOM
 function outputRoomName(room) {
@@ -149,7 +166,11 @@ function outputUsers(users) {
     ${users
       .map(
         (user) =>
-          `<li>${user.username} <i id='${user.username}' style="color: #ee7067" class="fa fa-hand-paper hidden"></i> <span id='${user.username}-badge' class="hidden badge">${user.badge}</span></li>`
+          `<li>${user.username} 
+          <i id='${user.username}' style="color: #ee7067" class="fa fa-hand-paper hidden">
+          </i> 
+          <span id='${user.username}-badge' class="hidden badge">${user.badge}</span>
+          </li>`
       )
       .join("")}
     `;

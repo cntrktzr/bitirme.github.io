@@ -73,12 +73,12 @@ io.on("connection", (socket, language) => {
   socket.on("chatMessage", (msg) => {
     const user = getCurrentUser(socket.id, language);
 
-    const languageArr = ["en", "es", "de", "fr", "it", "tr"];
+    const languageArr = ["en", "es", "de", "fr", "it", "tr" , "ru", "hi", "ar", "zh", "pl", "ko", "pt", "nl", "ja"];
 
     languageArr.forEach((language) => {
       if (`${user.language}` == language) {
         if (
-          ["Null", "null", "nul", "nullo", "nulo", "hükümsüz"].indexOf(
+          ["Null", "null", "nul", "nullo", "nulo", "hükümsüz", "нулевой", "शून्य", "لا شيء", "无效的", "zero", "없는", "nula", "nul", "ヌル"].indexOf(
             String(msg)
           ) == -1
         ) {
@@ -108,7 +108,7 @@ io.on("connection", (socket, language) => {
 
           for (const translation of response.translations) {
             if (
-              ["Null", "null", "nul", "nullo", "nulo", "hükümsüz"].indexOf(
+              ["Null", "null", "nul", "nullo", "nulo", "hükümsüz", "нулевой", "शून्य", "لا شيء", "无效的", "zero", "없는", "nula", "nul", "ヌル"].indexOf(
                 translation.translatedText.toString()
               ) == -1
             ) {

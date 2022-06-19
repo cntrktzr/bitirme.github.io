@@ -14,16 +14,11 @@
 </div>
 <% }) %> <% success_message.forEach(element => { %>
 <div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong> <button style="border:none ; background:transparent; margin-left: 2vw;"><a href="/login"> <%- element.msg %></a></button>  </strong>
-  </button>
-</div>
-<% }) %>
-
-%> <% success_message.forEach(element => { %>
-<div class="alert alert-success alert-dismissible fade show" role="alert">
-  <strong> <%- element.msg2 %> </strong>
+  <strong>  <%- element.msg %></strong>
   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
     <span aria-hidden="true">&times;</span>
   </button>
 </div>
 <% }) %>
+
+
