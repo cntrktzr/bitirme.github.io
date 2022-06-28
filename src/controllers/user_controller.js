@@ -54,6 +54,10 @@ const createRoom = async (req, res, next) =>{
   }
 };
 
+const showUserJoin = function (req, res, next) {
+  res.render("index", { user:req.user, layout:"./layout/userjoin_layout.ejs" });
+};
+
 
 
 
@@ -62,5 +66,6 @@ module.exports = {
   showProfil,
   updateProfile,
   showJoinPage,
-  createRoom
+  createRoom,
+  showUserJoin
 };

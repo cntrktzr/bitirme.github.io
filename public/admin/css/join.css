@@ -11,6 +11,7 @@ body {
   font-family: "Roboto", sans-serif;
   padding: 0;
   margin: 0;
+  background-image: linear-gradient(180deg, #7359a2 10%, #271a42 100%);
 }
 
 #root {
@@ -27,7 +28,7 @@ body {
   text-align: center;
   height: 100vh;
   align-items: center;
-  background-image: linear-gradient(180deg, #7359a2 10%, #271a42 100%);
+ 
 }
 
 .join-innerContainer {

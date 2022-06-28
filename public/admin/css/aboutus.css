@@ -1,0 +1,152 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html {
+    scroll-behavior: smooth;
+  }
+body{
+    background: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(224,215,242,1) 100%);
+    width: 1920px;
+    height: 930px;
+    padding-left: 235px;
+    padding-right: 235px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+main{
+    padding-top: 90px;
+    padding-bottom: 50px;
+}
+header{
+    display: flex;
+}
+.nav-menu li{
+    display: flex;
+    padding-top: 19px;
+}
+.ul1 a{
+    text-decoration: none;
+    color: rgba(43,35,61,1);
+    font-family: 'Fira Sans Condensed', sans-serif;
+    padding: 15px;
+    font-size: 24px;
+}
+.ul1 a:hover{
+    background-color: rgba(224, 215, 242,1);
+    border-radius: 10px;
+    font-weight: bold;
+}
+.ul2 a{
+    text-decoration: none;
+    color: rgba(43,35,61,1);
+    font-family: 'Fira Sans Condensed', sans-serif;
+    padding: 15px;
+    font-size: 24px;
+    margin-right: 10px;
+}
+.ul2 a:hover{
+    font-weight: bold;
+    background-color: rgba(224, 215, 242,1);
+    border-radius: 10px;
+}
+.button{
+    width: 150px; ;
+    background-color: rgba(115, 88, 161,1);
+    border: none;
+    border-radius: 10px;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 24px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    cursor: pointer;
+    margin: auto;
+    display: block;
+    margin-top: -15px;
+  }
+  .button:hover{
+      width: 150px; ;
+      background-color: rgba(224, 215, 242,1);
+      border: none;
+      border-radius: 10px;
+      color: rgba(43,35,61,1);
+      text-align: center;
+      text-decoration: none;
+      font-family: 'Fira Sans Condensed', sans-serif;
+      font-weight: bold;
+      font-size: 24px;
+      padding-top: 15px;
+      padding-bottom: 15px;
+      cursor: pointer;
+      margin: auto;
+      display: block;
+      margin-top: -15px;
+    }
+    main{
+        padding-top: 90px;
+        padding-bottom: 50px;
+    }
+    .uzun-yazi{
+        width: 1350px;
+        padding-left: 50px;
+    }
+    .title{
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-weight: 800;
+        font-size: 30px;
+        color: rgba(43,35,61,1);
+        margin-bottom: 10px;
+    }
+    .text{
+        font-family: 'Fira Sans Condensed', sans-serif;
+        font-size: 24px;
+        color: rgba(43,35,61,1);
+    }
+    
+    .en-alt {
+        width: 75.52vw;
+        display: block;
+        margin-top: 2vw;
+        margin-bottom: -2vw;
+      }
+      .sol-kay {
+        animation-name: moveInLeft;
+        animation-duration: 1s;
+      }
+      .sağ-kay {
+        animation-name: moveInRight;
+        animation-duration: 1s;
+      }
+      
+      @keyframes moveInRight {
+        0% {
+          opacity: 0;
+          transform: translateX(10rem);
+        }
+        80% {
+          transform: translateX(-1rem);
+        }
+        100% {
+          opacity: 1;
+          transform: translate(0);
+        }
+      }
+      
+      @keyframes moveInLeft {
+        0% {
+          transform: translateX(-10rem);
+        }
+      
+        80% {
+          transform: translateX(1rem);
+        }
+      
+        100% {
+          transform: translate(0);
+        }
+      }
