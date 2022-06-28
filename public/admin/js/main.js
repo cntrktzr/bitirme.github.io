@@ -79,7 +79,7 @@ function outputMessage(message) {
   
 
     div.classList.add("message");
-    console.log(`Ahmet ${message.translatedText}`);
+    console.log(`${message.translatedText}`);
     div.innerHTML =
       ` <body>
       <p class="meta">${message.username}<span>  ${message.time}</span></p>
