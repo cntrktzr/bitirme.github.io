@@ -14,7 +14,7 @@
                 <% if (locals.validation_error != undefined) { %> <%-
                 include('./partials/_mesaj') %> <% } %>
               </div>
-              <form class="user" actiom="/register" method="post">
+              <form class="user" action="/register" method="post">
                 <div class="form-group row">
                   <div class="col-sm-6 mb-3 mb-sm-0">
                     <input
@@ -112,11 +112,7 @@
                 </a>
               </form>
               <hr />
-              <div class="text-center">
-                <a class="small" href="forgot-password.html"
-                  >Forgot Password?</a
-                >
-              </div>
+              
               <div class="text-center">
                 <a class="small" href="login.html"
                   >Already have an account? Login!</a

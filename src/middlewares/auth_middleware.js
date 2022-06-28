@@ -1,3 +1,5 @@
+
+
 const loggedIn = function (req, res, next) {
   if (req.isAuthenticated()) {
     return next();
@@ -14,6 +16,8 @@ const notLoggedIn = function (req, res, next) {
     res.redirect("/user");
   }
 };
+
+
 
 module.exports = {
   loggedIn,

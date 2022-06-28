@@ -55,10 +55,24 @@ const validateEmail = () => {
   return [body("email").trim().isEmail().withMessage("Enter valid e-mail.")];
 };
 
+const validateJoin = () => {
+  return [
+
+    body("room")
+      .trim()
+      .isLength({ min: 10 })
+      .withMessage("Minumum 10 character.")
+      .isLength({ max: 20 })
+      .withMessage("Maximum 20 character."),
+  ];
+};
+
+
 
 
 module.exports = {
   validateNewUser,
   validateLogin,
   validateEmail,
+  validateJoin
 };

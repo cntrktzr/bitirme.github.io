@@ -194,6 +194,13 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  res.locals.validation_error = req.flash("validation_error");
+  res.locals.room = req.flash("room");
+  
+  next();
+});
+
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -207,6 +214,7 @@ app.use(express.urlencoded({ extended: true }));
 
 const res = require("express/lib/response");
 const { $where } = require("./src/model/user_model");
+const {} = require("./src/model/join_model");
 const { resolveAny } = require("dns");
 
 app.get("/", (req, res) => {
