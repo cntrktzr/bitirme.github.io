@@ -13,7 +13,7 @@ router.post("/change-profile", authMiddleware.loggedIn, userController.updatePro
 
 
 router.get("/create-meeting", userController.showJoinPage);
-router.post("/create-meeting",validatorMiddleware.validateJoin, userController.createRoom );
+router.post("/user-create-meeting",validatorMiddleware.validateJoin(), userController.createRoom );
 
 router.get("/user-join", userController.showUserJoin );
 

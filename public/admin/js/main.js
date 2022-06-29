@@ -99,8 +99,6 @@ function outputMessage(message) {
   }
 }
 
-
-
 function textToAudio(message, lang) {
   let speech = new SpeechSynthesisUtterance();
   speech.lang = getLang(lang);

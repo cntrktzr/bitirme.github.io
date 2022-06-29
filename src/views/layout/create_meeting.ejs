@@ -13,7 +13,7 @@
 			crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="/admin/css/join.css" />
-		<title>T&I</title>
+		<title>T&I - Creat Meeting</title>
 	</head>
 	<body>
 		<div class="join-outerContainer">
@@ -21,12 +21,12 @@
 				<h1 class="join-heading">T&I</h1>
 				<% if (locals.validation_error != undefined) { %> <%-
 					include('../partials/_mesaj') %> <% } %>
-				<form class="join" action="/chat" method="get">
+				<form class="join" action="/user/user-create-meeting" method="post">
 					<div class="form-control">
 						<input type="text" name="username" value="<%- user.name + user.lastname%>" id="username" class=join-input placeholder="Name" required />
 					</div>
 					<div class="form-control">
-						<input type="text" name="room" value="<%= typeof room != 'undefined' ? room : '' %>" id="room" class="join-input mt-20"  placeholder="Room ID" required />
+						<input type="text" name="room" id="room" class="join-input mt-20"  placeholder="Room ID" required />
 					</div>
 					
 					<div class="form-control" >
