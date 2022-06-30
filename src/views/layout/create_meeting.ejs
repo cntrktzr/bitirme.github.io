@@ -18,13 +18,17 @@
 	<body>
 		<div class="join-outerContainer">
 			<div class="join-innerContainer">
+				<div>
+					<a style="margin-left: -365px; margin-top:-50px; color: white;" href="/user">
+						<i class="fa fa-user" aria-hidden="true"></i>
+					</a>
+				</div>
 				<h1 class="join-heading">T&I</h1>
 				<% if (locals.validation_error != undefined) { %> <%-
 					include('../partials/_mesaj') %> <% } %>
 				<form class="join" action="/user/user-create-meeting" method="post">
 					<div class="form-control">
-						<input type="text" name="username" value="<%- user.name + user.lastname%>" id="username" class=join-input placeholder="Name" required />
-					</div>
+						<input type="text" name="username" value="<%- user.name %> <%-  %><%- user.lastname %>" id="username" class=join-input placeholder="Name" required />					</div>
 					<div class="form-control">
 						<input type="text" name="room" id="room" class="join-input mt-20"  placeholder="Room ID" required />
 					</div>
@@ -49,7 +53,7 @@
 
 					  </select>
 					</div>
-					<button class="join-button mt-20" type="submit">Create Meeting</button>
+					<button class="join-button mt-20" value="submit" type="submit">Create Meeting</button>
 					<a href="/user" class="join-button mt-20" style="font-size: 15px;">  Profile</a>
 				</form>
 			</div>

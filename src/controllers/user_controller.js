@@ -12,8 +12,27 @@ const showProfil = function (req, res, next) {
   res.render("profil", { user: req.user, layout: "./layout/user_layout.ejs" });
 };
 
-const updateProfile = function (req, res, next) {
-  console.log(req.body);
+const updateProfile = async function (req, res, next) {
+
+  const updatedInfo = {
+    name: req.body.name,
+    lastname: req.body.lastname,
+    language: req.body.language
+  }
+
+  try{
+    console.log(req.body);
+   const sonuc =  await User.findByIdAndUpdate(req.user.id, updatedInfo)
+   
+    if(sonuc){
+      console.log("Updated");
+    }
+
+  }
+  catch(hata){
+    console.log(hata);
+
+  }
 };
 
 const showJoinPage = function (req, res, next) {
@@ -28,7 +47,7 @@ const createRoom = async (req, res, next) => {
   if (!hatalar.isEmpty()) {
     req.flash("validation_error", hatalar.array());
     req.flash("room", req.body.room);
-    res.redirect("/user/create-meeting");
+    res.redirect("/user/user-create-meeting");
   } else {
     try {
       const _roomID = await Join.findOne({ room: req.body.room });
@@ -36,7 +55,7 @@ const createRoom = async (req, res, next) => {
       if (_roomID) {
         req.flash("validation_error", [{ msg: "This Room ID has been taken" }]);
         req.flash("room", req.body.room);
-        res.redirect("/user/create-meeting");
+        res.redirect("/user/user-create-meeting");
       } else {
         const newRoom = new Join({
           room: req.body.room,
@@ -44,7 +63,7 @@ const createRoom = async (req, res, next) => {
         await newRoom.save();
         console.log("Room ID kaydedildi.");
 
-        res.redirect("/chat");
+        res.redirect("/chat?username="+req.body.username+"&room="+req.body.room+"&language="+req.body.language);
       }
     } catch (err) {
       console.log(err);
