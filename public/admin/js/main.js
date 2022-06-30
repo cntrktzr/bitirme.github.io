@@ -1,8 +1,7 @@
-// This is the front end js file
+//front end js file
 
 const chatForm = document.getElementById("chat-form");
 const chatMessages = document.querySelector(".chat-messages");
-//const selectedLanguage = document.getElementById("selected-language");
 const roomName = document.getElementById("room-name");
 const userList = document.getElementById("users");
 const handButton = document.getElementById("btnHand");
@@ -22,6 +21,7 @@ socket.on("roomUsers", ({ users, room, language }) => {
   //outputLanguage(language);
   outputRoomName(room);
   outputUsers(users);
+
 });
 
 // Catch the message here
@@ -30,6 +30,7 @@ socket.on("message", (message) => {
   outputMessage(message);
   chatMessages.scrollTop = chatMessages.scrollHeight;
 });
+
 
 //Submit the form (Handwriting)
 chatForm.addEventListener("submit", (e) => {
@@ -161,6 +162,7 @@ function getLang(language) {
 function outputRoomName(room) {
   roomName.innerText = room;
 }
+
 
 function outputUsers(users) {
   userList.innerHTML = `
