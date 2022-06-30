@@ -17,7 +17,7 @@ const {
 } = require("./public/admin/js/users");
 const server = http.createServer(app);
 const io = socketio(server);
-const PORT = 3000 || process.env.PORT;
+const PORT = 5000 || process.env.PORT;
 const { TranslationServiceClient } = require("@google-cloud/translate");
 const { Translate } = require("@google-cloud/translate").v2;
 
