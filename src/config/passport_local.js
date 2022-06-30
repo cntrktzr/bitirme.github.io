@@ -1,7 +1,6 @@
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("../model/user_model");
 const bcrypt = require("bcrypt");
-const { Language } = require("@material-ui/icons");
 
 module.exports = function (passport) {
   const options = {
