@@ -17,7 +17,7 @@ const {
 } = require("./public/admin/js/users");
 const server = http.createServer(app);
 const io = socketio(server);
-const PORT = 5000 || process.env.PORT;
+const PORT = 3000 || process.env.PORT;
 const { TranslationServiceClient } = require("@google-cloud/translate");
 const { Translate } = require("@google-cloud/translate").v2;
 
@@ -174,7 +174,7 @@ app.use(
     resave: false,
     saveUninitialized: true,
     cookie: {
-      maxAge: 100 * 60 * 60 * 24,
+      maxAge: 1000 * 60 * 60 * 24,
     },
     store: sessionStore,
   })

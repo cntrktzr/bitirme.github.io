@@ -11,21 +11,16 @@
 			crossorigin="anonymous"
 		/>
 		<link rel="stylesheet" href="/admin/css/join.css" />
-		<title>T&I - Join</title>
+		<title>T&I</title>
 	</head>
 	<body>
 		<div class="join-outerContainer">
 			<div class="join-innerContainer">
-				<div>
-					<a style="margin-left: -365px; margin-top:-50px; color: white;" href="/user">
-						<i class="fa fa-user" aria-hidden="true"></i>
-					</a>
-				</div>
 				<h1 class="join-heading">T&I</h1>
 				<form action="/chat">
 					<div class="form-control">
 						<input
-							value="<%- user.name %> <%-  %><%- user.lastname %>"
+							value="<%- user.name + user.lastname %> "
 							type="text"
 							name="username"
 							id="username"
@@ -59,6 +54,7 @@
 					  </select>
 					</div>
 					<button href="/chat" class="join-button mt-20" type="submit">Join</button>
+					<a style="font-size: 12px;" href="/user" class="join-button mt-20">  Profile</a>
 				</form>
 			</div>
 			<img src='/admin/img/gorsel.png' alt="join page logo" class="join-img"/>

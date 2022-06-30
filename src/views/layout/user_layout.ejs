@@ -31,7 +31,6 @@
 
     <!-- Custom styles for this template-->
     <link href="/admin/css/sb-admin-2.min.css" rel="stylesheet" />
-    <link href="/admin/css/join.css" rel="stylesheet" />
   </head>
 
   <body id="page-top">
@@ -64,8 +63,8 @@
         <hr class="sidebar-divider d-none d-md-block" />
 
         <li style="margin-top:-10px;" class="nav-item">
-          <a  class="nav-link"  href="/user/profil">
-            <i  class="fas fa-user"></i>
+          <a class="nav-link" href="/user/profil">
+            <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
             Profile
           </a>
         </li>
@@ -90,7 +89,7 @@
         </li>
 
         <li style="margin-top: -35px;" class="nav-item">
-          <a class="nav-link" style="font-size: 40px;" href="/user/user-create-meeting">
+          <a class="nav-link" style="font-size: 40px;" href="/user/create-meeting">
             <i st class="fa fa-plus-circle" aria-hidden="true"></i>
             <span>Create a Meeting</span>
           </a>
@@ -100,22 +99,11 @@
         <hr style="margin-top: 2px;" class="sidebar-divider d-none d-md-block" />
 
         <li style="margin-top: -43px;" class="nav-item">
-          <a class="nav-link" style="font-size: 40px;" href="/user/user-create-meeting">
+          <a class="nav-link" style="font-size: 40px;" href="/user/create-meeting">
             <i class="fa fa-info-circle" aria-hidden="true"></i>
             <span>About Us</span>
           </a>
-
-          <div class="sidebar-heading">Logout</div>
-          <hr style="margin-top: 2px;" class="sidebar-divider d-none d-md-block" />
-          
-        <li style="margin-top: -43px;" class="nav-item ">
-          <a class="nav-link" style="font-size: 40px;" href="#" data-toggle="modal" data-target="#logoutModal">
-            <i class="fas fa-sign-out-alt " ></i>
-             <span>Logout</span>
-          </a>
         </li>
-
-        
        
         <!-- Divider -->
 
@@ -131,7 +119,9 @@
         <!-- Main Content -->
         <div id="content">
           <!-- Topbar -->
-          
+          <nav
+            class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow"
+          >
             <!-- Sidebar Toggle (Topbar) -->
             <button
               id="sidebarToggleTop"
@@ -139,18 +129,141 @@
             >
               <i class="fa fa-bars"></i>
             </button>
+
+            <!-- Topbar Search -->
+            
+
+            <!-- Topbar Navbar -->
+            <ul class="navbar-nav ml-auto">
+              <!-- Nav Item - Search Dropdown (Visible Only XS) -->
+              <li class="nav-item dropdown no-arrow d-sm-none">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="searchDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <i class="fas fa-search fa-fw"></i>
+                </a>
+                <!-- Dropdown - Messages -->
+                <div
+                  class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                  aria-labelledby="searchDropdown"
+                >
+                  <form class="form-inline mr-auto w-100 navbar-search">
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control bg-light border-0 small"
+                        placeholder="Search for..."
+                        aria-label="Search"
+                        aria-describedby="basic-addon2"
+                      />
+                      <div class="input-group-append">
+                        <button class="btn btn-primary" type="button">
+                          <i class="fas fa-search fa-sm"></i>
+                        </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </li>
+
+              <!-- Nav Item - Alerts -->
+              <li class="nav-item dropdown no-arrow mx-1">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="alertsDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  
+                </a>
+              </li>
+
+              <li class="nav-item dropdown no-arrow mx-1">
+                
+              </li>
+
+              <div class="topbar-divider d-none d-sm-block"></div>
+
+              <!-- Nav Item - User Information -->
+              <li class="nav-item dropdown no-arrow">
+                <a
+                  class="nav-link dropdown-toggle"
+                  href="#"
+                  id="userDropdown"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                >
+                  <span  class="mr-2 d-none d-lg-inline text-gray-600 small"
+                    ></span
+                  >
+                  <img
+                    class="img-profile rounded-circle"
+                    src="/admin/img/undraw_profile.svg"
+                  />
+                </a>
+                <!-- Dropdown - User Information -->
+                <div
+                  class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                  aria-labelledby="userDropdown"
+                >
+
+                
+
+                  <a
+                    class="dropdown-item"
+                    href="#"
+                    data-toggle="modal"
+                    data-target="#logoutModal"
+                  >
+                    <i
+                      class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"
+                    ></i>
+                    Logout
+                  </a>
+
+                  
+
                   </a>
                 </div>
               </li>
             </ul>
           </nav>
+          <!-- End of Topbar -->
+
+          <!-- Begin Page Content -->
           <div class="container-fluid">
+            <!-- Page Heading -->
             <%- body %> 
           </div>
+          <!-- /.container-fluid -->
         </div>
-      </div>
-    </div>
+        <!-- End of Main Content -->
 
+        <!-- Footer -->
+        
+        <!-- End of Footer -->
+      </div>
+      <!-- End of Content Wrapper -->
+    </div>
+    <!-- End of Page Wrapper -->
+
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+      <i class="fas fa-angle-up"></i>
+    </a>
+
+    <!-- Logout Modal-->
     <div
       class="modal fade"
       id="logoutModal"
