@@ -228,6 +228,7 @@ app.use("/chat", chatRouter);
 
 app.use("/user", userRouter);
 
-server.listen(PORT, () => {
+const host = '0.0.0.0';
+server.listen(PORT, host, () => {
   console.log(`Server running on ${PORT}..`);
 });
