@@ -1,0 +1,13 @@
+{
+    "type": "service_account",
+    "project_id": "bitirme-projesi-348016",
+    "private_key_id": "7e896e35a55983920262152e587abfbacaf2bf1e",
+    "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQCC88vYd3hnB91w\nfYvOVF+4yrcy/87+n/aAh2m2/dV51AoXPsUYEWj82qvoJ6tO0H6ocsEKcZJCpttM\np9bzCpVpdohpR72CKuPDiGdh+YmRTv8WQyJ1yFvIe5lWpx0BhJog92i8z6JCIsGm\neR5PYEKWm0pt1nnj1Lp4/i4dQEM4pIENoHRhFmWibtUx+tR453U1gKgPqBl2vZRX\nh68KVB0jGCoSIPh7j1OXqtKm5ikhbwJTozsQUCbU+f/JVoNdUvCsxhj+RC8JBhnf\nPU6noEHmfngidemJ6AoITMtI5eZ16y1bRxoKWwDMVI+UvBXPGMGwDfiabsT9hrp6\nq2MtElHHAgMBAAECggEABFasdCvWu6vvvIh3gQRoz95tF5qQrDBdKK2T2I64+Gc7\nvSc38EMZARIDn3Ah0lb0POnhMGxKP4mrFIz8NHAvOnle+p7FJ6wt5wgJZZ5KKwJj\nHCs118SMGeyfMqPcJ6hrhnHiY/Y8tq4Gtj70CW0AhJN5JOhCs8Qtnp2ZP7nZBrLZ\nO9bIBSTsg8ZOxBuix1aXL6xHhXubWf3bNTTdebTVwMq+I85w/I7yNhXErTzwOyre\nukx4+k7Ryk8Y9pMLnSEzq6c5pXeasQmxlMZjSMokrqTn4jZpKcjwUTaMP9jm0z4E\n5CEXvvkcQjXC2VqEXtUxjpH61ILeF8I7NO0KHD94xQKBgQC3VwybC3WTxH+jmrWL\n1zVKYy1IHfpgRn6mS3UJjYjhOAF6U23ZB0iD+4XumiL2Gla4t9Gedn1O5VhPftP0\nEwOyWCF5WrULwnVIZxutabGAFlktl7F0dT+mP0MbcIQYn3w/cy7Zn6tI8BcSOGzQ\nihpb2YmIBnfsNTfjTf8GE/sVewKBgQC22bLcqANCwgxGeC4C8WayDCAKgVCfx+Pc\n1oBhM8CmuOj+7weiudu8eIdFxBwTyHcg1ISHxRsL9nWk0pFMgHvJZqiw9aXr2FdT\nvhkQLaWsUjFTXuib3vEHXin/E2XK2XtUIizOCFN94rjzDGBUAFgEIBJnuYEiHT3U\n1VOFO7V1JQKBgCOC8ugdIhsLFoYD82Iwvxu3dg/f7p0zSli/iN3e0kJ9bJvbCQ3e\ngUc/MsPyiw8MLvv8bte4r7DWb3KGaFuAS1kCBQnSbfrnIXxyrEO8kyryKTfRiAe8\npiV3X3IzKwLx8UkA8HQqnyyzhGR9FWaXOV/NFPyJ9DSGYlrewqTUve99AoGBAIuQ\nIms1ejesMP5goI3yf3YKtzINfeJXCd73gkmu3K7kmEJtY6Cax9NVE7r2co/PBM50\nJywSEBDTbvv9FJYVw2X4C232MUyQdicfA7ZLgRbELY369QRz5/i9sMRWo+1ujimr\nZBNmW4PMV2p72dKD6KpNaH7vIldNhnI62WLqLhhZAoGAdhHYoqwL/H0kdiqwYGm9\nla6czBoTlDLgRiRCExnmMTPze+cnLgLNU05YzkC82guJ7aUPZm6WT/FNklXPq7bJ\nC+uGn4lRqK9fYMIk8w8SdOTZEi2fVGeDBRuPhCl9UV/gP7SlOCYU6WdAyoNflEJ1\nRLdXtKz55FWHBtfgj3G9kks=\n-----END PRIVATE KEY-----\n",
+    "client_email": "translation-quickstart@bitirme-projesi-348016.iam.gserviceaccount.com",
+    "client_id": "110291303507168788139",
+    "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+    "token_uri": "https://oauth2.googleapis.com/token",
+    "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+    "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/translation-quickstart%40bitirme-projesi-348016.iam.gserviceaccount.com"
+  }
+  
