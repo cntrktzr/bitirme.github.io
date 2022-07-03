@@ -7,4 +7,4 @@ mongoose
     useNewUrlParser: true,
   })
   .then(() => console.log("Veritabanına bağlanıldı."))
-  .catch((hata) => console.log(`Veritabanına bağlanıldı. ${hata}`));
+  .catch((hata) => console.log(`Veritabanına bağlanılamadı. ${hata}`));
